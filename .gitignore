@@ -1,0 +1,91 @@
+# ==========================================
+# Build & Compiled Files
+# ==========================================
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+dist/
+
+# ==========================================
+# IDE & Editors
+# ==========================================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# ==========================================
+# OS Files
+# ==========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Jena/Fuseki Tools (Downloaded by setup.sh)
+# ==========================================
+tools/apache-jena-*/
+tools/apache-jena-fuseki-*/
+tools/*.tar.gz
+tools/*.zip
+tools/*.md5
+
+# ==========================================
+# TDB2 Database (Generated from TTL files)
+# ==========================================
+data/tdb2/Data-*/
+data/tdb2/tdb.lock
+data/tdb2/journal.jrnl
+
+# ==========================================
+# Logs & Runtime
+# ==========================================
+logs/
+*.log
+*.pid
+nohup.out
+.fuseki.pid
+
+# ==========================================
+# Environment & Secrets
+# ==========================================
+.env
+.env.local
+.env.*.local
+config/shiro.ini.local
+
+# ==========================================
+# Backups & Temp Files
+# ==========================================
+*.bak
+*.backup
+*.tmp
+*~
+.#*
+
+# ==========================================
+# Docker
+# ==========================================
+.docker/
+docker-compose.override.yml
+
+# ==========================================
+# Node (if used)
+# ==========================================
+node_modules/
+npm-debug.log
+package-lock.json

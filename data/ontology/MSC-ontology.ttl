@@ -1,0 +1,324 @@
+@prefix sc: <http://example.com/MSCOnto#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ===== CLASS DEFINITIONS =====
+
+sc:EndProduct a owl:Class ;
+    rdfs:label "End Product" ;
+    rdfs:comment "Final product delivered to customers" ;
+    rdfs:subClassOf sc:Product .
+
+sc:IntermediaryProduct a owl:Class ;
+    rdfs:label "Intermediary Product" ;
+    rdfs:comment "Intermediate product in manufacturing process" ;
+    rdfs:subClassOf sc:Product .
+
+sc:Product a owl:Class ;
+    rdfs:label "Product" ;
+    rdfs:comment "Base class for all products" .
+
+sc:CustomerRequirement a owl:Class ;
+    rdfs:label "Customer Requirement" ;
+    rdfs:comment "Specifications required by customer" .
+
+sc:ProcessConfiguration a owl:Class ;
+    rdfs:label "Process Configuration" ;
+    rdfs:comment "Configuration of a manufacturing process" .
+
+sc:Process a owl:Class ;
+    rdfs:label "Process" ;
+    rdfs:comment "Manufacturing or assembly process" .
+
+sc:Resource a owl:Class ;
+    rdfs:label "Resource" ;
+    rdfs:comment "Material or workforce resource" .
+
+sc:Supplier a owl:Class ;
+    rdfs:label "Supplier" ;
+    rdfs:comment "Supplier of resources" .
+
+sc:Site a owl:Class ;
+    rdfs:label "Manufacturing Site" ;
+    rdfs:comment "Physical location where processes are performed" .
+
+sc:Device a owl:Class ;
+    rdfs:label "Device" ;
+    rdfs:comment "Equipment or machinery at a site" .
+
+sc:Property a owl:Class ;
+    rdfs:label "Property" ;
+    rdfs:comment "Characteristic or attribute of resource/device" .
+
+sc:Sensor a owl:Class ;
+    rdfs:label "Sensor" ;
+    rdfs:comment "Measurement device" .
+
+sc:LogisticRoute a owl:Class ;
+    rdfs:label "Logistic Route" ;
+    rdfs:comment "Transportation route between locations" .
+
+# ===== OBJECT PROPERTIES =====
+
+sc:satisfiesRequirement a owl:ObjectProperty ;
+    rdfs:label "satisfies requirement" ;
+    rdfs:domain sc:Product ;
+    rdfs:range sc:CustomerRequirement ;
+    owl:inverseOf sc:isSatisfiedBy .
+
+sc:isSatisfiedBy a owl:ObjectProperty ;
+    rdfs:label "is satisfied by" ;
+    rdfs:domain sc:CustomerRequirement ;
+    rdfs:range sc:Product ;
+    owl:inverseOf sc:satisfiesRequirement .
+
+sc:hasComponent a owl:ObjectProperty ;
+    rdfs:label "has component" ;
+    rdfs:domain sc:EndProduct ;
+    rdfs:range sc:IntermediaryProduct ;
+    owl:inverseOf sc:isComponentOf .
+
+sc:isComponentOf a owl:ObjectProperty ;
+    rdfs:label "is component of" ;
+    rdfs:domain sc:IntermediaryProduct ;
+    rdfs:range sc:EndProduct ;
+    owl:inverseOf sc:hasComponent .
+
+sc:requiresProcess a owl:ObjectProperty ;
+    rdfs:label "requires process" ;
+    rdfs:domain sc:ProcessConfiguration ;
+    rdfs:range sc:Process ;
+    owl:inverseOf sc:isRequiredBy .
+
+sc:isRequiredBy a owl:ObjectProperty ;
+    rdfs:label "is required by" ;
+    rdfs:domain sc:Process ;
+    rdfs:range sc:ProcessConfiguration ;
+    owl:inverseOf sc:requiresProcess .
+
+sc:usesResource a owl:ObjectProperty ;
+    rdfs:label "uses resource" ;
+    rdfs:domain sc:ProcessConfiguration ;
+    rdfs:range sc:Resource ;
+    owl:inverseOf sc:isUsedIn .
+
+sc:isUsedIn a owl:ObjectProperty ;
+    rdfs:label "is used in" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range sc:ProcessConfiguration ;
+    owl:inverseOf sc:usesResource .
+
+sc:outputsEndProduct a owl:ObjectProperty ;
+    rdfs:label "outputs end product" ;
+    rdfs:domain sc:ProcessConfiguration ;
+    rdfs:range sc:EndProduct ;
+    owl:inverseOf sc:isOutputOf .
+
+sc:isOutputOf a owl:ObjectProperty ;
+    rdfs:label "is output of" ;
+    rdfs:domain sc:EndProduct ;
+    rdfs:range sc:ProcessConfiguration ;
+    owl:inverseOf sc:outputsEndProduct .
+
+sc:outputsProduct a owl:ObjectProperty ;
+    rdfs:label "outputs product" ;
+    rdfs:domain sc:ProcessConfiguration ;
+    rdfs:range sc:IntermediaryProduct ;
+    owl:inverseOf sc:isProductOf .
+
+sc:isProductOf a owl:ObjectProperty ;
+    rdfs:label "is product of" ;
+    rdfs:domain sc:IntermediaryProduct ;
+    rdfs:range sc:ProcessConfiguration ;
+    owl:inverseOf sc:outputsProduct .
+
+sc:inputsProduct a owl:ObjectProperty ;
+    rdfs:label "inputs product" ;
+    rdfs:domain sc:IntermediaryProduct ;
+    rdfs:range sc:ProcessConfiguration ;
+    owl:inverseOf sc:receivesInput .
+
+sc:receivesInput a owl:ObjectProperty ;
+    rdfs:label "receives input" ;
+    rdfs:domain sc:ProcessConfiguration ;
+    rdfs:range sc:IntermediaryProduct ;
+    owl:inverseOf sc:inputsProduct .
+
+sc:dependsOn a owl:ObjectProperty ;
+    rdfs:label "depends on" ;
+    rdfs:domain sc:ProcessConfiguration ;
+    rdfs:range sc:ProcessConfiguration ;
+    owl:inverseOf sc:isPreviousStepOf .
+
+sc:isPreviousStepOf a owl:ObjectProperty ;
+    rdfs:label "is previous step of" ;
+    rdfs:domain sc:ProcessConfiguration ;
+    rdfs:range sc:ProcessConfiguration ;
+    owl:inverseOf sc:dependsOn .
+
+sc:providedBy a owl:ObjectProperty ;
+    rdfs:label "provided by" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range sc:Supplier ;
+    owl:inverseOf sc:provides .
+
+sc:provides a owl:ObjectProperty ;
+    rdfs:label "provides" ;
+    rdfs:domain sc:Supplier ;
+    rdfs:range sc:Resource ;
+    owl:inverseOf sc:providedBy .
+
+sc:performedAt a owl:ObjectProperty ;
+    rdfs:label "performed at" ;
+    rdfs:domain sc:Process ;
+    rdfs:range sc:Site ;
+    owl:inverseOf sc:hosts .
+
+sc:hosts a owl:ObjectProperty ;
+    rdfs:label "hosts" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:Process ;
+    owl:inverseOf sc:performedAt .
+
+sc:hasDevice a owl:ObjectProperty ;
+    rdfs:label "has device" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:Device ;
+    owl:inverseOf sc:isLocatedAt .
+
+sc:isLocatedAt a owl:ObjectProperty ;
+    rdfs:label "is located at" ;
+    rdfs:domain sc:Device ;
+    rdfs:range sc:Site ;
+    owl:inverseOf sc:hasDevice .
+
+sc:hasProperty a owl:ObjectProperty ;
+    rdfs:label "has property" ;
+    rdfs:domain owl:Thing ;
+    rdfs:range sc:Property ;
+    owl:inverseOf sc:propertyOf .
+
+sc:propertyOf a owl:ObjectProperty ;
+    rdfs:label "property of" ;
+    rdfs:domain sc:Property ;
+    rdfs:range owl:Thing ;
+    owl:inverseOf sc:hasProperty .
+
+sc:observes a owl:ObjectProperty ;
+    rdfs:label "observes" ;
+    rdfs:domain sc:Sensor ;
+    rdfs:range sc:Property ;
+    owl:inverseOf sc:observedBy .
+
+sc:observedBy a owl:ObjectProperty ;
+    rdfs:label "observed by" ;
+    rdfs:domain sc:Property ;
+    rdfs:range sc:Sensor ;
+    owl:inverseOf sc:observes .
+
+sc:fromSupplier a owl:ObjectProperty ;
+    rdfs:label "from supplier" ;
+    rdfs:domain sc:LogisticRoute ;
+    rdfs:range sc:Supplier ;
+    owl:inverseOf sc:originatesLogisticRoute .
+
+sc:originatesLogisticRoute a owl:ObjectProperty ;
+    rdfs:label "originates logistic route" ;
+    rdfs:domain sc:Supplier ;
+    rdfs:range sc:LogisticRoute ;
+    owl:inverseOf sc:fromSupplier .
+
+sc:toSupplier a owl:ObjectProperty ;
+    rdfs:label "to supplier" ;
+    rdfs:domain sc:LogisticRoute ;
+    rdfs:range sc:Supplier ;
+    owl:inverseOf sc:receivesLogisticRoute .
+
+sc:receivesLogisticRoute a owl:ObjectProperty ;
+    rdfs:label "receives logistic route" ;
+    rdfs:domain sc:Supplier ;
+    rdfs:range sc:LogisticRoute ;
+    owl:inverseOf sc:toSupplier .
+
+sc:fromSite a owl:ObjectProperty ;
+    rdfs:label "from site" ;
+    rdfs:domain sc:LogisticRoute ;
+    rdfs:range sc:Site ;
+    owl:inverseOf sc:originatesFromSite .
+
+sc:originatesFromSite a owl:ObjectProperty ;
+    rdfs:label "originates from site" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:LogisticRoute ;
+    owl:inverseOf sc:fromSite .
+
+sc:toSite a owl:ObjectProperty ;
+    rdfs:label "to site" ;
+    rdfs:domain sc:LogisticRoute ;
+    rdfs:range sc:Site ;
+    owl:inverseOf sc:receivesFromRoute .
+
+sc:receivesFromRoute a owl:ObjectProperty ;
+    rdfs:label "receives from route" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:LogisticRoute ;
+    owl:inverseOf sc:toSite .
+
+# ===== DATA PROPERTIES =====
+
+sc:id a owl:DatatypeProperty ;
+    rdfs:label "identifier" ;
+    rdfs:range xsd:string .
+
+sc:name a owl:DatatypeProperty ;
+    rdfs:label "name" ;
+    rdfs:range xsd:string .
+
+sc:location a owl:DatatypeProperty ;
+    rdfs:label "location" ;
+    rdfs:range xsd:string .
+
+sc:resourceType a owl:DatatypeProperty ;
+    rdfs:label "resource type" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range xsd:string .
+
+sc:processingRate a owl:DatatypeProperty ;
+    rdfs:label "processing rate" ;
+    rdfs:domain sc:Site ;
+    rdfs:range xsd:decimal .
+
+sc:greenOperationLevel a owl:DatatypeProperty ;
+    rdfs:label "green operation level" ;
+    rdfs:domain sc:Site ;
+    rdfs:range xsd:decimal .
+
+sc:transmissionUnit a owl:DatatypeProperty ;
+    rdfs:label "transmission unit" ;
+    rdfs:range xsd:string .
+
+sc:transmissionCost a owl:DatatypeProperty ;
+    rdfs:label "transmission cost" ;
+    rdfs:range xsd:decimal .
+
+sc:mandatory a owl:DatatypeProperty ;
+    rdfs:label "mandatory" ;
+    rdfs:range xsd:boolean .
+
+sc:delays a owl:DatatypeProperty ;
+    rdfs:label "delays" ;
+    rdfs:range xsd:integer .
+
+sc:dependencyType a owl:DatatypeProperty ;
+    rdfs:label "dependency type" ;
+    rdfs:range xsd:string .
+
+sc:rate a owl:DatatypeProperty ;
+    rdfs:label "rate" ;
+    rdfs:range xsd:decimal .
+
+sc:energyCost a owl:DatatypeProperty ;
+    rdfs:label "energy cost" ;
+    rdfs:range xsd:decimal .

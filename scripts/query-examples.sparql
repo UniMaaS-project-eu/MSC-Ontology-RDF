@@ -1,0 +1,109 @@
+# Query 1: List All End Products and Their Components
+PREFIX sc: <http://example.com/MSCOnto#>
+
+SELECT ?endProduct ?productName ?component ?componentName
+WHERE {
+  ?endProduct a sc:EndProduct ;
+             sc:name ?productName ;
+             sc:hasComponent ?component .
+  ?component sc:name ?componentName .
+}
+ORDER BY ?endProduct
+
+# Query 2: Find All Suppliers and Their Provided Resources
+PREFIX sc: <http://example.com/MSCOnto#>
+
+SELECT ?supplier ?supplierName ?location ?resource ?resourceName ?resourceType
+WHERE {
+  ?supplier a sc:Supplier ;
+           sc:name ?supplierName ;
+           sc:location ?location ;
+           sc:provides ?resource .
+  ?resource sc:name ?resourceName ;
+           sc:resourceType ?resourceType .
+}
+ORDER BY ?supplierName ?resourceName
+
+# Query 3: All Manufacturing Sites and Their Processing Metrics
+PREFIX sc: <http://example.com/MSCOnto#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?site ?siteName ?location ?processingRate ?greenLevel
+WHERE {
+  ?site a sc:Site ;
+       sc:name ?siteName ;
+       sc:location ?location ;
+       sc:processingRate ?processingRate ;
+       sc:greenOperationLevel ?greenLevel .
+}
+ORDER BY DESC(?processingRate)
+
+# Query 4: Process Dependencies (Sequential Chain)
+PREFIX sc: <http://example.com/MSCOnto#>
+
+SELECT ?pc1Id ?pc1 ?pc2Id ?pc2
+WHERE {
+  ?pc1 a sc:ProcessConfiguration ;
+      sc:id ?pc1Id ;
+      sc:dependsOn ?pc2 .
+  ?pc2 a sc:ProcessConfiguration ;
+      sc:id ?pc2Id .
+}
+ORDER BY ?pc1Id
+
+# Query 5: Resources Used Across Multiple Process Configurations
+PREFIX sc: <http://example.com/MSCOnto#>
+
+SELECT ?resource ?resourceName (COUNT(?processConfig) as ?usageCount)
+WHERE {
+  ?resource a sc:Resource ;
+           sc:name ?resourceName ;
+           sc:isUsedIn ?processConfig .
+}
+GROUP BY ?resource ?resourceName
+ORDER BY DESC(?usageCount)
+
+# Query 6: Green Operation Leader Sites (identify environmentally sustainable sites)
+PREFIX sc: <http://example.com/MSCOnto#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?site ?siteName ?location ?greenLevel ?processingRate
+WHERE {
+  ?site a sc:Site ;
+       sc:name ?siteName ;
+       sc:location ?location ;
+       sc:greenOperationLevel ?greenLevel ;
+       sc:processingRate ?processingRate .
+}
+ORDER BY DESC(?greenLevel)
+
+# Query 7: Find "optimal" processes using fast suppliers and sustainable sites
+PREFIX sc: <http://example.com/MSCOnto#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?processConfig ?configId ?process ?processName ?site ?siteName 
+       ?greenLevel ?supplier ?supplierName ?route ?transportMode
+WHERE {
+  ?processConfig a sc:ProcessConfiguration ;
+                sc:id ?configId ;
+                sc:requiresProcess ?process .
+  
+  ?process sc:name ?processName ;
+          sc:performedAt ?site .
+  
+  ?site sc:name ?siteName ;
+       sc:greenOperationLevel ?greenLevel ;
+       sc:receivesLogisticRoute ?route .
+  
+  ?route sc:transportationMode "fast truck" ;
+        sc:fromSupplier ?supplier .
+  
+  ?supplier sc:name ?supplierName .
+  
+  FILTER(?greenLevel >= "0.8"^^xsd:decimal)
+}
+ORDER BY ?configId
+
+
+
+

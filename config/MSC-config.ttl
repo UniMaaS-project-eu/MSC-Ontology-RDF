@@ -1,0 +1,42 @@
+@prefix :        <http://base/> .
+@prefix tdb2:    <http://jena.apache.org/2016/tdb#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+
+# Load TDB2 classes
+[] ja:loadClass "org.apache.jena.tdb2.TDB2" .
+
+# Define the dataset with absolute path
+:dataset rdf:type tdb2:DatasetTDB2 ;
+    tdb2:location "/home/ubuntu/UniMaaS/WP4_RDF/jena-workspace/data/tdb2" .
+
+# Define the service with named endpoints
+:service_msc a fuseki:Service ;
+    fuseki:name "MSC" ;
+    fuseki:dataset :dataset ;
+    
+    # Query endpoint (GET, POST)
+    fuseki:endpoint [
+        fuseki:name "query" ;
+        fuseki:operation fuseki:query
+    ] ;
+    
+    # Update endpoint (POST)
+    fuseki:endpoint [
+        fuseki:name "update" ;
+        fuseki:operation fuseki:update
+    ] ;
+    
+    # Graph Store Protocol (Read)
+    fuseki:endpoint [
+        fuseki:name "get" ;
+        fuseki:operation fuseki:gsp-r
+    ] ;
+    
+    # Graph Store Protocol (Read-Write)
+    fuseki:endpoint [
+        fuseki:name "data" ;
+        fuseki:operation fuseki:gsp-rw
+    ] .
