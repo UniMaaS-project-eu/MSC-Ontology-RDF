@@ -21,6 +21,7 @@ This project provides:
 
 #### 1. Clone repository
 git clone https://github.com/UniMaaS-project-eu/MSC-Ontology-RDF.git
+
 cd MSC-Ontology-RDF
 #### 2. Setup (downloads Jena & Fuseki)
 ./setup.sh
@@ -43,6 +44,7 @@ Access:
 - SPARQL Query: http://localhost:3030/MSC/query
 
 Example SPARQL Query: 
+
  curl -X POST 'http://localhost:3030/MSC/query' \
    --data-urlencode 'query=SELECT (COUNT(?s) as ?count) WHERE { ?s ?p ?o }' \
    -H "Accept: application/sparql-results+json"
@@ -54,3 +56,7 @@ Expected: 703 triples loaded
 
 #### Add more data
 Add TTL files to data/ontology/ and run ./scripts/load-data.sh again
+
+## Example SPARQL queries
+The **./scripts/query-examples.sparql** file contains 7 example SPARQL queries.
+Copy & paste them into Fuseki's web UI or use with curl (see example above).
