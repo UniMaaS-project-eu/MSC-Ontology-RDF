@@ -1,6 +1,6 @@
 # MSC Ontology RDF Graph Database
 
-A complete Apache Jena Fuseki setup for managing and querying an example RDF graph database fro Adient following the MSC ontology.
+A complete Apache Jena Fuseki setup for managing and querying an example RDF graph database for Adient, following the MSC ontology.
 
 ## Overview
 
