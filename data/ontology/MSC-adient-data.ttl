@@ -4,7 +4,7 @@
 
 # ===== PRODUCTS =====
 
-<http://example.com/product/PROD001> a sc:EndProduct ;
+<http://example.com/product/PROD001> a sc:Product ;
     sc:id "PROD001" ;
     sc:name "Luxury Seat V5" ;
     sc:hasComponent <http://example.com/product/PROD101> ;
@@ -14,73 +14,50 @@
     sc:satisfiesRequirement <http://example.com/requirement/REQ002> ;
     sc:satisfiesRequirement <http://example.com/requirement/REQ003> .
 
-<http://example.com/product/PROD101> a sc:IntermediaryProduct ;
+<http://example.com/product/PROD101> a sc:Product ;
     sc:id "PROD101" ;
     sc:name "Memory Foam Core" ;
-    sc:isComponentOf <http://example.com/product/PROD001> ;
-    sc:satisfiesRequirement <http://example.com/requirement/REQ001> ;
-    sc:isProductOf <http://example.com/processconfig/CONF002> ;
-    sc:inputsProduct <http://example.com/processconfig/CONF008> .
+    sc:satisfiesRequirement <http://example.com/requirement/REQ001> .
 
-<http://example.com/product/PROD102> a sc:IntermediaryProduct ;
+<http://example.com/product/PROD102> a sc:Product ;
     sc:id "PROD102" ;
     sc:name "Leather Trim Cover" ;
-    sc:isComponentOf <http://example.com/product/PROD001> ;
-    sc:satisfiesRequirement <http://example.com/requirement/REQ003> ;
-    sc:isProductOf <http://example.com/processconfig/CONF004> ;
-    sc:inputsProduct <http://example.com/processconfig/CONF008> .
+    sc:satisfiesRequirement <http://example.com/requirement/REQ003> .
 
-<http://example.com/product/PROD103> a sc:IntermediaryProduct ;
+<http://example.com/product/PROD103> a sc:Product ;
     sc:id "PROD103" ;
     sc:name "Power Adjustable Frame" ;
-    sc:isComponentOf <http://example.com/product/PROD001> ;
-    sc:satisfiesRequirement <http://example.com/requirement/REQ002> ;
-    sc:isProductOf <http://example.com/processconfig/CONF007> ;
-    sc:inputsProduct <http://example.com/processconfig/CONF008> .
+    sc:satisfiesRequirement <http://example.com/requirement/REQ002> .
 
-<http://example.com/product/PROD104> a sc:IntermediaryProduct ;
+<http://example.com/product/PROD104> a sc:Product ;
     sc:id "PROD104" ;
-    sc:name "Memory Foam Fluffed" ;
-    sc:isProductOf <http://example.com/processconfig/CONF001> ;
-    sc:inputsProduct <http://example.com/processconfig/CONF002> .
+    sc:name "Memory Foam Fluffed" .
 
-<http://example.com/product/PROD105> a sc:IntermediaryProduct ;
+<http://example.com/product/PROD105> a sc:Product ;
     sc:id "PROD105" ;
-    sc:name "Leather Cut" ;
-    sc:isProductOf <http://example.com/processconfig/CONF003> ;
-    sc:inputsProduct <http://example.com/processconfig/CONF004> .
+    sc:name "Leather Cut" .
 
-<http://example.com/product/PROD106> a sc:IntermediaryProduct ;
+<http://example.com/product/PROD106> a sc:Product ;
     sc:id "PROD106" ;
-    sc:name "Welded Frame" ;
-    sc:isProductOf <http://example.com/processconfig/CONF005> ;
-    sc:inputsProduct <http://example.com/processconfig/CONF006> .
+    sc:name "Welded Frame" .
 
-<http://example.com/product/PROD107> a sc:IntermediaryProduct ;
+<http://example.com/product/PROD107> a sc:Product ;
     sc:id "PROD107" ;
-    sc:name "Powered Welded Frame" ;
-    sc:isProductOf <http://example.com/processconfig/CONF006> ;
-    sc:inputsProduct <http://example.com/processconfig/CONF007> .
+    sc:name "Powered Welded Frame" .
 
 # ===== CUSTOMER REQUIREMENTS =====
 
 <http://example.com/requirement/REQ001> a sc:CustomerRequirement ;
     sc:id "REQ001" ;
-    sc:name "Ventilated Seat" ;
-    sc:isSatisfiedBy <http://example.com/product/PROD001> ;
-    sc:isSatisfiedBy <http://example.com/product/PROD101> .
+    sc:name "Ventilated Seat" .
 
 <http://example.com/requirement/REQ002> a sc:CustomerRequirement ;
     sc:id "REQ002" ;
-    sc:name "Power Adjustment" ;
-    sc:isSatisfiedBy <http://example.com/product/PROD001> ;
-    sc:isSatisfiedBy <http://example.com/product/PROD103> .
+    sc:name "Power Adjustment" .
 
 <http://example.com/requirement/REQ003> a sc:CustomerRequirement ;
     sc:id "REQ003" ;
-    sc:name "Leather Upholstery" ;
-    sc:isSatisfiedBy <http://example.com/product/PROD001> ;
-    sc:isSatisfiedBy <http://example.com/product/PROD102> .
+    sc:name "Leather Upholstery" .
 
 # ===== RESOURCES =====
 
@@ -88,193 +65,221 @@
     sc:id "RES001" ;
     sc:name "Gel Memory Foam Block" ;
     sc:resourceType "material" ;
-    sc:providedBy <http://example.com/supplier/SUP001> ;
-    sc:providedBy <http://example.com/supplier/SUP002> ;
-    sc:isUsedIn <http://example.com/processconfig/CONF001> ;
+    sc:isProvidedBy <http://example.com/supplier/SUP001> ;
+    sc:isProvidedBy <http://example.com/supplier/SUP002> ;
     sc:hasProperty <http://example.com/property/propertyOfResource1> .
 
 <http://example.com/resource/RES002> a sc:Resource ;
     sc:id "RES002" ;
     sc:name "Leather Roll Premium" ;
     sc:resourceType "material" ;
-    sc:providedBy <http://example.com/supplier/SUP003> ;
-    sc:providedBy <http://example.com/supplier/SUP004> ;
-    sc:isUsedIn <http://example.com/processconfig/CONF003> .
+    sc:isProvidedBy <http://example.com/supplier/SUP003> ;
+    sc:isProvidedBy <http://example.com/supplier/SUP004> .
 
 <http://example.com/resource/RES003> a sc:Resource ;
     sc:id "RES003" ;
     sc:name "Steel Tubes" ;
     sc:resourceType "material" ;
-    sc:providedBy <http://example.com/supplier/SUP005> ;
-    sc:providedBy <http://example.com/supplier/SUP006> ;
-    sc:isUsedIn <http://example.com/processconfig/CONF005> .
+    sc:isProvidedBy <http://example.com/supplier/SUP005> ;
+    sc:isProvidedBy <http://example.com/supplier/SUP006> .
 
 <http://example.com/resource/RES004> a sc:Resource ;
     sc:id "RES004" ;
     sc:name "Adhesive Glue" ;
-    sc:resourceType "material" ;
-    sc:isUsedIn <http://example.com/processconfig/CONF006> .
+    sc:resourceType "material" .
 
 <http://example.com/resource/RES005> a sc:Resource ;
     sc:id "RES005" ;
     sc:name "Skilled Upholsterer" ;
     sc:resourceType "workforce" ;
-    sc:providedBy <http://example.com/supplier/SUP007> ;
-    sc:providedBy <http://example.com/supplier/SUP008> ;
-    sc:isUsedIn <http://example.com/processconfig/CONF003> .
+    sc:isProvidedBy <http://example.com/supplier/SUP007> ;
+    sc:isProvidedBy <http://example.com/supplier/SUP008> .
 
 <http://example.com/resource/RES006> a sc:Resource ;
     sc:id "RES006" ;
     sc:name "Mechanical Assembler" ;
-    sc:resourceType "workforce" ;
-    sc:isUsedIn <http://example.com/processconfig/CONF007> .
+    sc:resourceType "workforce" .
+
+# ===== LOCATIONS =====
+
+<http://example.com/location/LOC001> a sc:Location ;
+    sc:id "LOC001" ;
+    sc:name "Slovakia" .
+
+<http://example.com/location/LOC002> a sc:Location ;
+    sc:id "LOC002" ;
+    sc:name "Paris" .
+
+<http://example.com/location/LOC003> a sc:Location ;
+    sc:id "LOC003" ;
+    sc:name "Athens" .
+
+<http://example.com/location/LOC004> a sc:Location ;
+    sc:id "LOC004" ;
+    sc:name "London" .
+
+<http://example.com/location/LOC005> a sc:Location ;
+    sc:id "LOC005" ;
+    sc:name "Berlin" .
+
+<http://example.com/location/LOC006> a sc:Location ;
+    sc:id "LOC006" ;
+    sc:name "Milan" .
+
+<http://example.com/location/LOC007> a sc:Location ;
+    sc:id "LOC007" ;
+    sc:name "Sofia" .
+
+<http://example.com/location/LOC008> a sc:Location ;
+    sc:id "LOC008" ;
+    sc:name "Budapest" .
+
+<http://example.com/location/LOC009> a sc:Location ;
+    sc:id "LOC009" ;
+    sc:name "Austria" .
+
+<http://example.com/location/LOC010> a sc:Location ;
+    sc:id "LOC010" ;
+    sc:name "Czech Republic" .
+
+<http://example.com/location/LOC011> a sc:Location ;
+    sc:id "LOC011" ;
+    sc:name "Germany" .
+
+<http://example.com/location/LOC012> a sc:Location ;
+    sc:id "LOC012" ;
+    sc:name "Italy" .
+
+<http://example.com/location/LOC013> a sc:Location ;
+    sc:id "LOC013" ;
+    sc:name "Netherlands" .
+
+<http://example.com/location/LOC014> a sc:Location ;
+    sc:id "LOC014" ;
+    sc:name "Barcelona" .
 
 # ===== SUPPLIERS =====
 
 <http://example.com/supplier/SUP001> a sc:Supplier ;
     sc:id "SUP001" ;
     sc:name "MegaFoam Inc." ;
-    sc:location "Austria" ;
-    sc:provides <http://example.com/resource/RES001> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP001_SITE001> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP001_SITE002> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR1> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/L3> .
+    sc:hasLocation <http://example.com/location/LOC009> ;
+    sc:provides <http://example.com/resource/RES001> .
 
 <http://example.com/supplier/SUP002> a sc:Supplier ;
     sc:id "SUP002" ;
     sc:name "ThermoFoam Ltd." ;
-    sc:location "Czech Republic" ;
-    sc:provides <http://example.com/resource/RES001> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP002_SITE001> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP002_SITE002> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR1> .
+    sc:hasLocation <http://example.com/location/LOC010> ;
+    sc:provides <http://example.com/resource/RES001> .
 
 <http://example.com/supplier/SUP003> a sc:Supplier ;
     sc:id "SUP003" ;
     sc:name "LeatherWorld GmbH" ;
-    sc:location "Germany" ;
-    sc:provides <http://example.com/resource/RES002> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP003_SITE003> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP003_SITE004> .
+    sc:hasLocation <http://example.com/location/LOC011> ;
+    sc:provides <http://example.com/resource/RES002> .
 
 <http://example.com/supplier/SUP004> a sc:Supplier ;
     sc:id "SUP004" ;
     sc:name "CoveredInleather Inc." ;
-    sc:location "Italy" ;
-    sc:provides <http://example.com/resource/RES002> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP004_SITE003> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP004_SITE004> .
+    sc:hasLocation <http://example.com/location/LOC012> ;
+    sc:provides <http://example.com/resource/RES002> .
 
 <http://example.com/supplier/SUP005> a sc:Supplier ;
     sc:id "SUP005" ;
     sc:name "SteelMakers MX" ;
-    sc:location "Germany" ;
-    sc:provides <http://example.com/resource/RES003> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP005_SITE005> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP005_SITE006> .
+    sc:hasLocation <http://example.com/location/LOC011> ;
+    sc:provides <http://example.com/resource/RES003> .
 
 <http://example.com/supplier/SUP006> a sc:Supplier ;
     sc:id "SUP006" ;
     sc:name "MadeofSteel MX" ;
-    sc:location "Netherlands" ;
-    sc:provides <http://example.com/resource/RES003> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP006_SITE005> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP006_SITE006> .
+    sc:hasLocation <http://example.com/location/LOC013> ;
+    sc:provides <http://example.com/resource/RES003> .
 
 <http://example.com/supplier/SUP007> a sc:Supplier ;
     sc:id "SUP007" ;
     sc:name "Adient Skilled Workforce EU" ;
-    sc:location "Germany" ;
-    sc:provides <http://example.com/resource/RES005> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP007_SITE003> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP007_SITE004> .
+    sc:hasLocation <http://example.com/location/LOC011> ;
+    sc:provides <http://example.com/resource/RES005> .
 
 <http://example.com/supplier/SUP008> a sc:Supplier ;
     sc:id "SUP008" ;
     sc:name "Adient Skilled Workforce EU 2" ;
-    sc:location "Barcelona" ;
-    sc:provides <http://example.com/resource/RES005> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP008_SITE003> ;
-    sc:originatesLogisticRoute <http://example.com/logisticroute/LR_SUP008_SITE004> .
+    sc:hasLocation <http://example.com/location/LOC014> ;
+    sc:provides <http://example.com/resource/RES005> .
 
 # ===== SITES =====
 
 <http://example.com/site/SITE001> a sc:Site ;
     sc:id "SITE001" ;
     sc:name "FoamPlant_Slovakia" ;
-    sc:location "Slovakia" ;
+    sc:performs <http://example.com/process/PROC001> ;
+    sc:performs <http://example.com/process/PROC002> ;
+    sc:hasLocation <http://example.com/location/LOC001> ;
     sc:processingRate "500"^^xsd:decimal ;
-    sc:greenOperationLevel "0.8"^^xsd:decimal ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP001_SITE001> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP002_SITE001> .
+    sc:greenOperationLevel "0.8"^^xsd:decimal .
 
 <http://example.com/site/SITE002> a sc:Site ;
     sc:id "SITE002" ;
     sc:name "FoamPlant_Paris" ;
-    sc:location "Paris" ;
+    sc:performs <http://example.com/process/PROC001> ;
+    sc:performs <http://example.com/process/PROC002> ;
+    sc:hasLocation <http://example.com/location/LOC002> ;
     sc:processingRate "400"^^xsd:decimal ;
-    sc:greenOperationLevel "0.88"^^xsd:decimal ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP001_SITE002> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP002_SITE002> .
+    sc:greenOperationLevel "0.88"^^xsd:decimal .
 
 <http://example.com/site/SITE003> a sc:Site ;
     sc:id "SITE003" ;
     sc:name "TrimPlant_Athens" ;
-    sc:location "Athens" ;
+    sc:performs <http://example.com/process/PROC003> ;
+    sc:performs <http://example.com/process/PROC004> ;
+    sc:hasLocation <http://example.com/location/LOC003> ;
     sc:processingRate "400"^^xsd:decimal ;
     sc:greenOperationLevel "0.8"^^xsd:decimal ;
-    sc:hasDevice <http://example.com/device/device1> ;
-    sc:originatesFromSite <http://example.com/logisticroute/L2> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/L2> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP003_SITE003> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP004_SITE003> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP007_SITE003> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP008_SITE003> .
+    sc:hasDevice <http://example.com/device/device1> .
 
 <http://example.com/site/SITE004> a sc:Site ;
     sc:id "SITE004" ;
     sc:name "TrimPlant_London" ;
-    sc:location "London" ;
+    sc:performs <http://example.com/process/PROC003> ;
+    sc:performs <http://example.com/process/PROC004> ;
+    sc:hasLocation <http://example.com/location/LOC004> ;
     sc:processingRate "600"^^xsd:decimal ;
-    sc:greenOperationLevel "0.75"^^xsd:decimal ;
-    sc:receivesFromRoute <http://example.com/logisticroute/L2> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/L2> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/L3> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP003_SITE004> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP004_SITE004> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP007_SITE004> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP008_SITE004> .
+    sc:greenOperationLevel "0.75"^^xsd:decimal .
 
 <http://example.com/site/SITE005> a sc:Site ;
     sc:id "SITE005" ;
     sc:name "StructurePlant_Berlin" ;
-    sc:location "Berlin" ;
+    sc:performs <http://example.com/process/PROC005> ;
+    sc:performs <http://example.com/process/PROC006> ;
+    sc:performs <http://example.com/process/PROC007> ;
+    sc:hasLocation <http://example.com/location/LOC005> ;
     sc:processingRate "450"^^xsd:decimal ;
-    sc:greenOperationLevel "0.7"^^xsd:decimal ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP005_SITE005> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP006_SITE005> .
+    sc:greenOperationLevel "0.7"^^xsd:decimal .
 
 <http://example.com/site/SITE006> a sc:Site ;
     sc:id "SITE006" ;
     sc:name "StructurePlant_Milan" ;
-    sc:location "Milan" ;
+    sc:performs <http://example.com/process/PROC005> ;
+    sc:performs <http://example.com/process/PROC006> ;
+    sc:performs <http://example.com/process/PROC007> ;
+    sc:hasLocation <http://example.com/location/LOC006> ;
     sc:processingRate "400"^^xsd:decimal ;
-    sc:greenOperationLevel "0.75"^^xsd:decimal ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP005_SITE006> ;
-    sc:receivesLogisticRoute <http://example.com/logisticroute/LR_SUP006_SITE006> .
+    sc:greenOperationLevel "0.75"^^xsd:decimal .
 
 <http://example.com/site/SITE007> a sc:Site ;
     sc:id "SITE007" ;
     sc:name "FinalAssembly_Sofia" ;
-    sc:location "Sofia" ;
+    sc:performs <http://example.com/process/PROC008> ;
+    sc:hasLocation <http://example.com/location/LOC007> ;
     sc:processingRate "700"^^xsd:decimal ;
     sc:greenOperationLevel "0.9"^^xsd:decimal .
 
 <http://example.com/site/SITE008> a sc:Site ;
     sc:id "SITE008" ;
     sc:name "FinalAssembly_Budapest" ;
-    sc:location "Budapest" ;
+    sc:performs <http://example.com/process/PROC008> ;
+    sc:hasLocation <http://example.com/location/LOC008> ;
     sc:processingRate "600"^^xsd:decimal ;
     sc:greenOperationLevel "0.8"^^xsd:decimal .
 
@@ -283,58 +288,50 @@
 <http://example.com/process/PROC001> a sc:Process ;
     sc:id "PROC001" ;
     sc:name "Foam Fluffing" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF001> ;
-    sc:performedAt <http://example.com/site/SITE001> ;
-    sc:performedAt <http://example.com/site/SITE002> .
+    sc:isPerformedAt <http://example.com/site/SITE001> ;
+    sc:isPerformedAt <http://example.com/site/SITE002> .
 
 <http://example.com/process/PROC002> a sc:Process ;
     sc:id "PROC002" ;
     sc:name "Foam Shaping" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF002> ;
-    sc:performedAt <http://example.com/site/SITE001> ;
-    sc:performedAt <http://example.com/site/SITE002> .
+    sc:isPerformedAt <http://example.com/site/SITE001> ;
+    sc:isPerformedAt <http://example.com/site/SITE002> .
 
 <http://example.com/process/PROC003> a sc:Process ;
     sc:id "PROC003" ;
     sc:name "Leather Cutting" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF003> ;
-    sc:performedAt <http://example.com/site/SITE003> ;
-    sc:performedAt <http://example.com/site/SITE004> .
+    sc:isPerformedAt <http://example.com/site/SITE003> ;
+    sc:isPerformedAt <http://example.com/site/SITE004> .
 
 <http://example.com/process/PROC004> a sc:Process ;
     sc:id "PROC004" ;
     sc:name "Leather Stitching" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF004> ;
-    sc:performedAt <http://example.com/site/SITE003> ;
-    sc:performedAt <http://example.com/site/SITE004> .
+    sc:isPerformedAt <http://example.com/site/SITE003> ;
+    sc:isPerformedAt <http://example.com/site/SITE004> .
 
 <http://example.com/process/PROC005> a sc:Process ;
     sc:id "PROC005" ;
     sc:name "Frame Welding" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF005> ;
-    sc:performedAt <http://example.com/site/SITE005> ;
-    sc:performedAt <http://example.com/site/SITE006> .
+    sc:isPerformedAt <http://example.com/site/SITE005> ;
+    sc:isPerformedAt <http://example.com/site/SITE006> .
 
 <http://example.com/process/PROC006> a sc:Process ;
     sc:id "PROC006" ;
     sc:name "Power Unit Integration" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF006> ;
-    sc:performedAt <http://example.com/site/SITE005> ;
-    sc:performedAt <http://example.com/site/SITE006> .
+    sc:isPerformedAt <http://example.com/site/SITE005> ;
+    sc:isPerformedAt <http://example.com/site/SITE006> .
 
 <http://example.com/process/PROC007> a sc:Process ;
     sc:id "PROC007" ;
     sc:name "Frame Assembly" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF007> ;
-    sc:performedAt <http://example.com/site/SITE005> ;
-    sc:performedAt <http://example.com/site/SITE006> .
+    sc:isPerformedAt <http://example.com/site/SITE005> ;
+    sc:isPerformedAt <http://example.com/site/SITE006> .
 
 <http://example.com/process/PROC008> a sc:Process ;
     sc:id "PROC008" ;
     sc:name "Final Assembly" ;
-    sc:isRequiredBy <http://example.com/processconfig/CONF008> ;
-    sc:performedAt <http://example.com/site/SITE007> ;
-    sc:performedAt <http://example.com/site/SITE008> .
+    sc:isPerformedAt <http://example.com/site/SITE007> ;
+    sc:isPerformedAt <http://example.com/site/SITE008> .
 
 # ===== PROCESS CONFIGURATIONS =====
 
@@ -342,87 +339,84 @@
     sc:id "CONF001" ;
     sc:requiresProcess <http://example.com/process/PROC001> ;
     sc:usesResource <http://example.com/resource/RES001> ;
-    sc:outputsProduct <http://example.com/product/PROD104> ;
-    sc:dependsOn <http://example.com/processconfig/CONF002> .
+    sc:hasOutput <http://example.com/product/PROD104> ;
+    sc:hasNextStep <http://example.com/processconfig/CONF002> .
 
 <http://example.com/processconfig/CONF002> a sc:ProcessConfiguration ;
     sc:id "CONF002" ;
     sc:requiresProcess <http://example.com/process/PROC002> ;
-    sc:inputsProduct <http://example.com/product/PROD104> ;
-    sc:outputsProduct <http://example.com/product/PROD101> ;
-    sc:dependsOn <http://example.com/processconfig/CONF001> ;
-    sc:dependsOn <http://example.com/processconfig/CONF008> .
+    sc:hasInput <http://example.com/product/PROD104> ;
+    sc:hasOutput <http://example.com/product/PROD101> ;
+    sc:hasPreviousStep <http://example.com/processconfig/CONF001> ;
+    sc:hasNextStep <http://example.com/processconfig/CONF008> .
 
 <http://example.com/processconfig/CONF003> a sc:ProcessConfiguration ;
     sc:id "CONF003" ;
     sc:requiresProcess <http://example.com/process/PROC003> ;
     sc:usesResource <http://example.com/resource/RES002> ;
     sc:usesResource <http://example.com/resource/RES005> ;
-    sc:outputsProduct <http://example.com/product/PROD105> ;
-    sc:dependsOn <http://example.com/processconfig/CONF004> .
+    sc:hasOutput <http://example.com/product/PROD105> ;
+    sc:hasNextStep <http://example.com/processconfig/CONF004> .
 
 <http://example.com/processconfig/CONF004> a sc:ProcessConfiguration ;
     sc:id "CONF004" ;
     sc:requiresProcess <http://example.com/process/PROC004> ;
-    sc:inputsProduct <http://example.com/product/PROD105> ;
-    sc:outputsProduct <http://example.com/product/PROD102> ;
-    sc:dependsOn <http://example.com/processconfig/CONF003> ;
-    sc:dependsOn <http://example.com/processconfig/CONF008> .
+    sc:hasInput <http://example.com/product/PROD105> ;
+    sc:hasOutput <http://example.com/product/PROD102> ;
+    sc:hasPreviousStep <http://example.com/processconfig/CONF003> ;
+    sc:hasNextStep <http://example.com/processconfig/CONF008> .
 
 <http://example.com/processconfig/CONF005> a sc:ProcessConfiguration ;
     sc:id "CONF005" ;
     sc:requiresProcess <http://example.com/process/PROC005> ;
     sc:usesResource <http://example.com/resource/RES003> ;
-    sc:outputsProduct <http://example.com/product/PROD106> ;
-    sc:dependsOn <http://example.com/processconfig/CONF006> .
+    sc:hasOutput <http://example.com/product/PROD106> ;
+    sc:hasNextStep <http://example.com/processconfig/CONF006> .
 
 <http://example.com/processconfig/CONF006> a sc:ProcessConfiguration ;
     sc:id "CONF006" ;
     sc:requiresProcess <http://example.com/process/PROC006> ;
     sc:usesResource <http://example.com/resource/RES004> ;
-    sc:inputsProduct <http://example.com/product/PROD106> ;
-    sc:outputsProduct <http://example.com/product/PROD107> ;
-    sc:dependsOn <http://example.com/processconfig/CONF005> ;
-    sc:dependsOn <http://example.com/processconfig/CONF007> .
+    sc:hasInput <http://example.com/product/PROD106> ;
+    sc:hasOutput <http://example.com/product/PROD107> ;
+    sc:hasPreviousStep <http://example.com/processconfig/CONF005> ;
+    sc:hasNextStep <http://example.com/processconfig/CONF007> .
 
 <http://example.com/processconfig/CONF007> a sc:ProcessConfiguration ;
     sc:id "CONF007" ;
     sc:requiresProcess <http://example.com/process/PROC007> ;
     sc:usesResource <http://example.com/resource/RES006> ;
-    sc:inputsProduct <http://example.com/product/PROD107> ;
-    sc:outputsProduct <http://example.com/product/PROD103> ;
-    sc:dependsOn <http://example.com/processconfig/CONF006> ;
-    sc:dependsOn <http://example.com/processconfig/CONF008> .
+    sc:hasInput <http://example.com/product/PROD107> ;
+    sc:hasOutput <http://example.com/product/PROD103> ;
+    sc:hasPreviousStep <http://example.com/processconfig/CONF006> ;
+    sc:hasNextStep <http://example.com/processconfig/CONF008> .
 
 <http://example.com/processconfig/CONF008> a sc:ProcessConfiguration ;
     sc:id "CONF008" ;
     sc:requiresProcess <http://example.com/process/PROC008> ;
-    sc:inputsProduct <http://example.com/product/PROD103> ;
-    sc:inputsProduct <http://example.com/product/PROD101> ;
-    sc:inputsProduct <http://example.com/product/PROD102> ;
-    sc:outputsEndProduct <http://example.com/product/PROD001> ;
-    sc:dependsOn <http://example.com/processconfig/CONF002> ;
-    sc:dependsOn <http://example.com/processconfig/CONF004> ;
-    sc:dependsOn <http://example.com/processconfig/CONF007> .
+    sc:hasInput <http://example.com/product/PROD103> ;
+    sc:hasInput <http://example.com/product/PROD101> ;
+    sc:hasInput <http://example.com/product/PROD102> ;
+    sc:hasOutput <http://example.com/product/PROD001> ;
+    sc:hasPreviousStep <http://example.com/processconfig/CONF002> ;
+    sc:hasPreviousStep <http://example.com/processconfig/CONF004> ;
+    sc:hasPreviousStep <http://example.com/processconfig/CONF007> .
 
 # ===== DEVICES =====
 
 <http://example.com/device/device1> a sc:Device ;
     sc:name "device1" ;
-    sc:isLocatedAt <http://example.com/site/SITE003> ;
     sc:hasProperty <http://example.com/property/propertyOfDevice1> .
 
 # ===== PROPERTIES =====
 
 <http://example.com/property/propertyOfDevice1> a sc:Property ;
     sc:name "propertyOfDevice1" ;
-    sc:propertyOf <http://example.com/device/device1> ;
-    sc:observedBy <http://example.com/sensor/Sensor1> .
+    sc:isObservedBy <http://example.com/sensor/Sensor1> .
 
 <http://example.com/property/propertyOfResource1> a sc:Property ;
     sc:name "propertyOfResource1" ;
-    sc:propertyOf <http://example.com/resource/RES001> ;
-    sc:observedBy <http://example.com/sensor/Sensor2> .
+    sc:isObservedBy <http://example.com/sensor/Sensor2> .
 
 # ===== SENSORS =====
 
@@ -436,113 +430,108 @@
 
 # ===== LOGISTIC ROUTES =====
 
-<http://example.com/logisticroute/LR1> a sc:LogisticRoute ;
-    sc:name "LR1" ;
-    sc:fromSupplier <http://example.com/supplier/SUP002> ;
-    sc:toSupplier <http://example.com/supplier/SUP001> .
-
 <http://example.com/logisticroute/L2> a sc:LogisticRoute ;
     sc:name "L2" ;
-    sc:fromSite <http://example.com/site/SITE003> ;
-    sc:toSite <http://example.com/site/SITE004> .
+    sc:hasStartingPoint <http://example.com/location/LOC003> ;
+    sc:hasEndingPoint <http://example.com/location/LOC004> .
 
 <http://example.com/logisticroute/L3> a sc:LogisticRoute ;
     sc:name "L3" ;
-    sc:fromSupplier <http://example.com/supplier/SUP001> ;
-    sc:toSite <http://example.com/site/SITE004> .
+    sc:hasStartingPoint <http://example.com/location/LOC009> ;
+    sc:hasEndingPoint <http://example.com/location/LOC004> .
 
 <http://example.com/logisticroute/LR_SUP001_SITE001> a sc:LogisticRoute ;
     sc:name "LR_SUP001_SITE001" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP001> ;
-    sc:toSite <http://example.com/site/SITE001> .
+    sc:hasStartingPoint <http://example.com/location/LOC009> ;
+    sc:hasEndingPoint <http://example.com/location/LOC001> .
 
 <http://example.com/logisticroute/LR_SUP001_SITE002> a sc:LogisticRoute ;
     sc:name "LR_SUP001_SITE002" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP001> ;
-    sc:toSite <http://example.com/site/SITE002> .
+    sc:hasStartingPoint <http://example.com/location/LOC009> ;
+    sc:hasEndingPoint <http://example.com/location/LOC002> .
 
 <http://example.com/logisticroute/LR_SUP002_SITE001> a sc:LogisticRoute ;
     sc:name "LR_SUP002_SITE001" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP002> ;
-    sc:toSite <http://example.com/site/SITE001> .
+    sc:hasStartingPoint <http://example.com/location/LOC010> ;
+    sc:hasEndingPoint <http://example.com/location/LOC001> .
 
 <http://example.com/logisticroute/LR_SUP002_SITE002> a sc:LogisticRoute ;
     sc:name "LR_SUP002_SITE002" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP002> ;
-    sc:toSite <http://example.com/site/SITE002> .
+    sc:hasStartingPoint <http://example.com/location/LOC010> ;
+    sc:hasEndingPoint <http://example.com/location/LOC002> .
 
 <http://example.com/logisticroute/LR_SUP003_SITE003> a sc:LogisticRoute ;
     sc:name "LR_SUP003_SITE003" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP003> ;
-    sc:toSite <http://example.com/site/SITE003> .
+    sc:hasStartingPoint <http://example.com/location/LOC011> ;
+    sc:hasEndingPoint <http://example.com/location/LOC003> .
 
 <http://example.com/logisticroute/LR_SUP003_SITE004> a sc:LogisticRoute ;
     sc:name "LR_SUP003_SITE004" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP003> ;
-    sc:toSite <http://example.com/site/SITE004> .
+    sc:hasStartingPoint <http://example.com/location/LOC011> ;
+    sc:hasEndingPoint <http://example.com/location/LOC004> .
 
 <http://example.com/logisticroute/LR_SUP004_SITE003> a sc:LogisticRoute ;
     sc:name "LR_SUP004_SITE003" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP004> ;
-    sc:toSite <http://example.com/site/SITE003> .
+    sc:hasStartingPoint <http://example.com/location/LOC012> ;
+    sc:hasEndingPoint <http://example.com/location/LOC003> .
 
 <http://example.com/logisticroute/LR_SUP004_SITE004> a sc:LogisticRoute ;
     sc:name "LR_SUP004_SITE004" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP004> ;
-    sc:toSite <http://example.com/site/SITE004> .
+    sc:hasStartingPoint <http://example.com/location/LOC012> ;
+    sc:hasEndingPoint <http://example.com/location/LOC004> .
 
 <http://example.com/logisticroute/LR_SUP005_SITE005> a sc:LogisticRoute ;
     sc:name "LR_SUP005_SITE005" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP005> ;
-    sc:toSite <http://example.com/site/SITE005> .
+    sc:hasStartingPoint <http://example.com/location/LOC011> ;
+    sc:hasEndingPoint <http://example.com/location/LOC005> .
 
 <http://example.com/logisticroute/LR_SUP005_SITE006> a sc:LogisticRoute ;
     sc:name "LR_SUP005_SITE006" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP005> ;
-    sc:toSite <http://example.com/site/SITE006> .
+    sc:hasStartingPoint <http://example.com/location/LOC011> ;
+    sc:hasEndingPoint <http://example.com/location/LOC006> .
 
 <http://example.com/logisticroute/LR_SUP006_SITE005> a sc:LogisticRoute ;
     sc:name "LR_SUP006_SITE005" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP006> ;
-    sc:toSite <http://example.com/site/SITE005> .
+    sc:hasStartingPoint <http://example.com/location/LOC013> ;
+    sc:hasEndingPoint <http://example.com/location/LOC005> .
 
 <http://example.com/logisticroute/LR_SUP006_SITE006> a sc:LogisticRoute ;
     sc:name "LR_SUP006_SITE006" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP006> ;
-    sc:toSite <http://example.com/site/SITE006> .
+    sc:hasStartingPoint <http://example.com/location/LOC013> ;
+    sc:hasEndingPoint <http://example.com/location/LOC006> .
 
 <http://example.com/logisticroute/LR_SUP007_SITE003> a sc:LogisticRoute ;
     sc:name "LR_SUP007_SITE003" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP007> ;
-    sc:toSite <http://example.com/site/SITE003> .
+    sc:hasStartingPoint <http://example.com/location/LOC011> ;
+    sc:hasEndingPoint <http://example.com/location/LOC003> .
 
 <http://example.com/logisticroute/LR_SUP007_SITE004> a sc:LogisticRoute ;
     sc:name "LR_SUP007_SITE004" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP007> ;
-    sc:toSite <http://example.com/site/SITE004> .
+    sc:hasStartingPoint <http://example.com/location/LOC011> ;
+    sc:hasEndingPoint <http://example.com/location/LOC004> .
 
 <http://example.com/logisticroute/LR_SUP008_SITE003> a sc:LogisticRoute ;
     sc:name "LR_SUP008_SITE003" ;
     sc:transportationMode "fast truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP008> ;
-    sc:toSite <http://example.com/site/SITE003> .
+    sc:hasStartingPoint <http://example.com/location/LOC014> ;
+    sc:hasEndingPoint <http://example.com/location/LOC003> .
 
 <http://example.com/logisticroute/LR_SUP008_SITE004> a sc:LogisticRoute ;
     sc:name "LR_SUP008_SITE004" ;
     sc:transportationMode "slow truck" ;
-    sc:fromSupplier <http://example.com/supplier/SUP008> ;
-    sc:toSite <http://example.com/site/SITE004> .
+    sc:hasStartingPoint <http://example.com/location/LOC014> ;
+    sc:hasEndingPoint <http://example.com/location/LOC004> .
