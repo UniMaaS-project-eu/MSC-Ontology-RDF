@@ -1,8 +1,24 @@
-@prefix sc: <http://example.com/MSCOnto#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
+# ===== ONTOLOGY METADATA =====
+<http://unimaas-project.eu/MSCOntology> a owl:Ontology ;
+    owl:versionIRI <http://unimaas-project.eu/MSCOntology/1.1.0> ;
+    owl:versionInfo "1.1.0" ;
+    dcterms:title "Manufacturing Service Chain Ontology" ;
+    dcterms:created "2026-02-24"^^xsd:date ;
+    dcterms:modified "2026-03-23"^^xsd:date ;
+    dcterms:issued "2026-03-23"^^xsd:date ;
+    dcterms:creator "NTUA" ;
+    dcterms:contributor "FLM" ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcat:keyword "manufacturing", "service chain", "ontology" ;
+    rdfs:comment "Version 1.1.0: " .
 
 # ===== CLASS DEFINITIONS =====
 sc:ConfigurableEntity a owl:Class ;
@@ -41,8 +57,8 @@ sc:Device a owl:Class ;
     rdfs:label "Device" ;
     rdfs:comment "Equipment or machinery at a site" .
 
-sc:Property a owl:Class ;
-    rdfs:label "Property" ;
+sc:Characteristic a owl:Class ;
+    rdfs:label "Characteristic" ;
     rdfs:comment "Characteristic or attribute of resource/device/site/supplier" .
 
 sc:Sensor a owl:Class ;
@@ -111,14 +127,20 @@ sc:hasNextStep a owl:ObjectProperty ;
 
 sc:isProvidedBy a owl:ObjectProperty ;
     rdfs:label "is provided by" ;
-    rdfs:domain sc:Resource ;
+    rdfs:domain [
+        a owl:Class ;
+        owl:unionOf (sc:Resource sc:Product)
+    ] ;
     rdfs:range sc:Supplier ;
     owl:inverseOf sc:provides .
 
 sc:provides a owl:ObjectProperty ;
     rdfs:label "provides" ;
     rdfs:domain sc:Supplier ;
-    rdfs:range sc:Resource ;
+    rdfs:range [
+        a owl:Class ;
+        owl:unionOf (sc:Resource sc:Product)
+    ] ;
     owl:inverseOf sc:isProvidedBy .
 
 sc:isPerformedAt a owl:ObjectProperty ;
@@ -138,20 +160,20 @@ sc:hasDevice a owl:ObjectProperty ;
     rdfs:domain sc:Site ;
     rdfs:range sc:Device .
 
-sc:hasProperty a owl:ObjectProperty ;
-    rdfs:label "has property" ;
+sc:hasCharacteristic a owl:ObjectProperty ;
+    rdfs:label "has characteristic" ;
     rdfs:domain sc:ConfigurableEntity ;
-    rdfs:range sc:Property .
+    rdfs:range sc:Characteristic .
 
 sc:observes a owl:ObjectProperty ;
     rdfs:label "observes" ;
     rdfs:domain sc:Sensor ;
-    rdfs:range sc:Property ;
+    rdfs:range sc:Characteristic ;
     owl:inverseOf sc:isObservedBy .
 
 sc:isObservedBy a owl:ObjectProperty ;
     rdfs:label "is observed by" ;
-    rdfs:domain sc:Property ;
+    rdfs:domain sc:Characteristic ;
     rdfs:range sc:Sensor ;
     owl:inverseOf sc:observes .
 
