@@ -12,10 +12,11 @@
 - Added versioning information 
 
 ### Changed
-- Class LogisticRoute his now connected only with class Location via the object properties hasStartingPoint and hasEndingPoint
+- Class LogisticRoute is now connected only with class Location via the object properties hasStartingPoint and hasEndingPoint
+- ProcessConfiguration nodes are now connected between them via the inverse relationships hasNextStep and hasPreviousStep
 - Class Supplier is now also directly connected with Product
-- Renamed Class Property to Characteristic and renamed object property HasProperty to hasCharacteristic
-- Merged classes EndProduct and IntermediateProduct to one unified class Product with revised relationships
+- Renamed Class Property to Characteristic and renamed object property hasProperty to hasCharacteristic
+- Merged classes EndProduct and IntermediateProduct into one unified class Product with revised relationships
 - Changed the namespace to http://unimaas-project.eu/MSCOntology
 
 ### Deprecated
