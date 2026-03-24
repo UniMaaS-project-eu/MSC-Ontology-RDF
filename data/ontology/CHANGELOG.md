@@ -1,4 +1,4 @@
-# Manufacturing Supply Chain Ontology - CHANGELOG
+# Manufacturing Service Chain Ontology - CHANGELOG
 
 ## [1.0.0] - 2026-02-24
 ### Added
