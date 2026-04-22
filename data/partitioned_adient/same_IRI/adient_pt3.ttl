@@ -1,0 +1,143 @@
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# 1st Phase Assembly Processes and Sites
+
+##Processes
+
+<http://unimaas-project.eu/process/PROC001> a sc:Process ;
+    sc:id "PROC001" ;
+    sc:name "Foam Fluffing" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE001> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE002> .
+
+<http://unimaas-project.eu/process/PROC002> a sc:Process ;
+    sc:id "PROC002" ;
+    sc:name "Foam Shaping" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE001> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE002> .
+
+<http://unimaas-project.eu/process/PROC003> a sc:Process ;
+    sc:id "PROC003" ;
+    sc:name "Leather Cutting" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE003> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE004> .
+
+<http://unimaas-project.eu/process/PROC004> a sc:Process ;
+    sc:id "PROC004" ;
+    sc:name "Leather Stitching" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE003> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE004> .
+
+
+## Sites
+
+<http://unimaas-project.eu/site/SITE001> a sc:Site ;
+    sc:id "SITE001" ;
+    sc:name "FoamPlant_Slovakia" ;
+    sc:performs <http://unimaas-project.eu/process/PROC001> ;
+    sc:performs <http://unimaas-project.eu/process/PROC002> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC001> ;
+    sc:processingRate "500"^^xsd:decimal ;
+    sc:greenOperationLevel "0.8"^^xsd:decimal .
+
+<http://unimaas-project.eu/site/SITE002> a sc:Site ;
+    sc:id "SITE002" ;
+    sc:name "FoamPlant_Paris" ;
+    sc:performs <http://unimaas-project.eu/process/PROC001> ;
+    sc:performs <http://unimaas-project.eu/process/PROC002> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC002> ;
+    sc:processingRate "400"^^xsd:decimal ;
+    sc:greenOperationLevel "0.88"^^xsd:decimal .
+
+<http://unimaas-project.eu/site/SITE003> a sc:Site ;
+    sc:id "SITE003" ;
+    sc:name "TrimPlant_Athens" ;
+    sc:performs <http://unimaas-project.eu/process/PROC003> ;
+    sc:performs <http://unimaas-project.eu/process/PROC004> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC003> ;
+    sc:processingRate "400"^^xsd:decimal ;
+    sc:greenOperationLevel "0.8"^^xsd:decimal ;
+    sc:hasDevice <http://unimaas-project.eu/device/device1> .
+
+<http://unimaas-project.eu/site/SITE004> a sc:Site ;
+    sc:id "SITE004" ;
+    sc:name "TrimPlant_London" ;
+    sc:performs <http://unimaas-project.eu/process/PROC003> ;
+    sc:performs <http://unimaas-project.eu/process/PROC004> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC004> ;
+    sc:processingRate "600"^^xsd:decimal ;
+    sc:greenOperationLevel "0.75"^^xsd:decimal .
+
+##Process Configurations
+
+<http://unimaas-project.eu/processconfig/CONF001> a sc:ProcessConfiguration ;
+    sc:id "CONF001" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC001> ;
+    sc:usesResource <http://unimaas-project.eu/resource/RES001> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD104> ;
+    sc:hasNextStep <http://unimaas-project.eu/processconfig/CONF002> .
+
+<http://unimaas-project.eu/processconfig/CONF002> a sc:ProcessConfiguration ;
+    sc:id "CONF002" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC002> ;
+    sc:hasInput <http://unimaas-project.eu/product/PROD104> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD101> ;
+    sc:hasPreviousStep <http://unimaas-project.eu/processconfig/CONF001> ;
+    sc:hasNextStep <http://unimaas-project.eu/processconfig/CONF008> .
+
+<http://unimaas-project.eu/processconfig/CONF003> a sc:ProcessConfiguration ;
+    sc:id "CONF003" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC003> ;
+    sc:usesResource <http://unimaas-project.eu/resource/RES002> ;
+    sc:usesResource <http://unimaas-project.eu/resource/RES005> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD105> ;
+    sc:hasNextStep <http://unimaas-project.eu/processconfig/CONF004> .
+
+<http://unimaas-project.eu/processconfig/CONF004> a sc:ProcessConfiguration ;
+    sc:id "CONF004" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC004> ;
+    sc:hasInput <http://unimaas-project.eu/product/PROD105> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD102> ;
+    sc:hasPreviousStep <http://unimaas-project.eu/processconfig/CONF003> ;
+    sc:hasNextStep <http://unimaas-project.eu/processconfig/CONF008> .
+
+##Sites 
+
+<http://unimaas-project.eu/site/SITE001> a sc:Site ;
+    sc:id "SITE001" ;
+    sc:name "FoamPlant_Slovakia" ;
+    sc:performs <http://unimaas-project.eu/process/PROC001> ;
+    sc:performs <http://unimaas-project.eu/process/PROC002> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC001> ;
+    sc:processingRate "500"^^xsd:decimal ;
+    sc:greenOperationLevel "0.8"^^xsd:decimal .
+
+<http://unimaas-project.eu/site/SITE002> a sc:Site ;
+    sc:id "SITE002" ;
+    sc:name "FoamPlant_Paris" ;
+    sc:performs <http://unimaas-project.eu/process/PROC001> ;
+    sc:performs <http://unimaas-project.eu/process/PROC002> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC002> ;
+    sc:processingRate "400"^^xsd:decimal ;
+    sc:greenOperationLevel "0.88"^^xsd:decimal .
+
+<http://unimaas-project.eu/site/SITE003> a sc:Site ;
+    sc:id "SITE003" ;
+    sc:name "TrimPlant_Athens" ;
+    sc:performs <http://unimaas-project.eu/process/PROC003> ;
+    sc:performs <http://unimaas-project.eu/process/PROC004> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC003> ;
+    sc:processingRate "400"^^xsd:decimal ;
+    sc:greenOperationLevel "0.8"^^xsd:decimal ;
+    sc:hasDevice <http://unimaas-project.eu/device/device1> .
+
+<http://unimaas-project.eu/site/SITE004> a sc:Site ;
+    sc:id "SITE004" ;
+    sc:name "TrimPlant_London" ;
+    sc:performs <http://unimaas-project.eu/process/PROC003> ;
+    sc:performs <http://unimaas-project.eu/process/PROC004> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC004> ;
+    sc:processingRate "600"^^xsd:decimal ;
+    sc:greenOperationLevel "0.75"^^xsd:decimal .

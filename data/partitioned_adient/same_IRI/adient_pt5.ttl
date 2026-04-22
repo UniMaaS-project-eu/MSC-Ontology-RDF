@@ -1,0 +1,31 @@
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+### Devices and sensors information 
+
+# ===== DEVICES =====
+
+<http://unimaas-project.eu/device/device1> a sc:Device ;
+    sc:name "device1" ;
+    sc:hasCharacteristic <http://unimaas-project.eu/characteristic/characteristicOfDevice1> .
+
+# ===== CHARACTERISTICS =====
+
+<http://unimaas-project.eu/characteristic/characteristicOfDevice1> a sc:Characteristic ;
+    sc:name "characteristicOfDevice1" ;
+    sc:isObservedBy <http://unimaas-project.eu/sensor/Sensor1> .
+
+<http://unimaas-project.eu/characteristic/characteristicOfResource1> a sc:Characteristic ;
+    sc:name "characteristicOfResource1" ;
+    sc:isObservedBy <http://unimaas-project.eu/sensor/Sensor2> .
+
+# ===== SENSORS =====
+
+<http://unimaas-project.eu/sensor/Sensor1> a sc:Sensor ;
+    sc:name "Sensor1" ;
+    sc:observes <http://unimaas-project.eu/characteristic/characteristicOfDevice1> .
+
+<http://unimaas-project.eu/sensor/Sensor2> a sc:Sensor ;
+    sc:name "Sensor2" ;
+    sc:observes <http://unimaas-project.eu/characteristic/characteristicOfResource1> .

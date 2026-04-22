@@ -1,0 +1,97 @@
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ===== PRODUCTS information and assembly of the last phase =====
+
+<http://unimaas-project.eu/product/PROD001> a sc:Product ;
+    sc:id "PROD001" ;
+    sc:name "Luxury Seat V5" ;
+    sc:hasComponent <http://unimaas-project.eu/product/PROD101> ;
+    sc:hasComponent <http://unimaas-project.eu/product/PROD102> ;
+    sc:hasComponent <http://unimaas-project.eu/product/PROD103> ;
+    sc:satisfiesRequirement <http://unimaas-project.eu/requirement/REQ001> ;
+    sc:satisfiesRequirement <http://unimaas-project.eu/requirement/REQ002> ;
+    sc:satisfiesRequirement <http://unimaas-project.eu/requirement/REQ003> .
+
+<http://unimaas-project.eu/product/PROD101> a sc:Product ;
+    sc:id "PROD101" ;
+    sc:name "Memory Foam Core" ;
+    sc:satisfiesRequirement <http://unimaas-project.eu/requirement/REQ001> .
+
+<http://unimaas-project.eu/product/PROD102> a sc:Product ;
+    sc:id "PROD102" ;
+    sc:name "Leather Trim Cover" ;
+    sc:satisfiesRequirement <http://unimaas-project.eu/requirement/REQ003> .
+
+<http://unimaas-project.eu/product/PROD103> a sc:Product ;
+    sc:id "PROD103" ;
+    sc:name "Power Adjustable Frame" ;
+    sc:satisfiesRequirement <http://unimaas-project.eu/requirement/REQ002> .
+
+<http://unimaas-project.eu/product/PROD104> a sc:Product ;
+    sc:id "PROD104" ;
+    sc:name "Memory Foam Fluffed" .
+
+<http://unimaas-project.eu/product/PROD105> a sc:Product ;
+    sc:id "PROD105" ;
+    sc:name "Leather Cut" .
+
+<http://unimaas-project.eu/product/PROD106> a sc:Product ;
+    sc:id "PROD106" ;
+    sc:name "Welded Frame" .
+
+<http://unimaas-project.eu/product/PROD107> a sc:Product ;
+    sc:id "PROD107" ;
+    sc:name "Powered Welded Frame" .
+
+# ===== CUSTOMER REQUIREMENTS =====
+
+<http://unimaas-project.eu/requirement/REQ001> a sc:CustomerRequirement ;
+    sc:id "REQ001" ;
+    sc:name "Ventilated Seat" .
+
+<http://unimaas-project.eu/requirement/REQ002> a sc:CustomerRequirement ;
+    sc:id "REQ002" ;
+    sc:name "Power Adjustment" .
+
+<http://unimaas-project.eu/requirement/REQ003> a sc:CustomerRequirement ;
+    sc:id "REQ003" ;
+    sc:name "Leather Upholstery" .
+
+# ====== Assembly of Luxury Seat product ======
+
+<http://unimaas-project.eu/processconfig/CONF008> a sc:ProcessConfiguration ;
+    sc:id "CONF008" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC008> ;
+    sc:hasInput <http://unimaas-project.eu/product/PROD103> ;
+    sc:hasInput <http://unimaas-project.eu/product/PROD101> ;
+    sc:hasInput <http://unimaas-project.eu/product/PROD102> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD001> ;
+    sc:hasPreviousStep <http://unimaas-project.eu/processconfig/CONF002> ;
+    sc:hasPreviousStep <http://unimaas-project.eu/processconfig/CONF004> ;
+    sc:hasPreviousStep <http://unimaas-project.eu/processconfig/CONF007> .
+
+<http://unimaas-project.eu/process/PROC008> a sc:Process ;
+    sc:id "PROC008" ;
+    sc:name "Final Assembly" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE007> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE008> .
+
+# === Sites for this process ====
+
+<http://unimaas-project.eu/site/SITE007> a sc:Site ;
+    sc:id "SITE007" ;
+    sc:name "FinalAssembly_Sofia" ;
+    sc:performs <http://unimaas-project.eu/process/PROC008> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC007> ;
+    sc:processingRate "700"^^xsd:decimal ;
+    sc:greenOperationLevel "0.9"^^xsd:decimal .
+
+<http://unimaas-project.eu/site/SITE008> a sc:Site ;
+    sc:id "SITE008" ;
+    sc:name "FinalAssembly_Budapest" ;
+    sc:performs <http://unimaas-project.eu/process/PROC008> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC008> ;
+    sc:processingRate "600"^^xsd:decimal ;
+    sc:greenOperationLevel "0.8"^^xsd:decimal .

@@ -1,0 +1,72 @@
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+##Processes of 2nd phase###
+
+<http://unimaas-project.eu/process/PROC005> a sc:Process ;
+    sc:id "PROC005" ;
+    sc:name "Frame Welding" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE005> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE006> .
+
+<http://unimaas-project.eu/process/PROC006> a sc:Process ;
+    sc:id "PROC006" ;
+    sc:name "Power Unit Integration" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE005> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE006> .
+
+<http://unimaas-project.eu/process/PROC007> a sc:Process ;
+    sc:id "PROC007" ;
+    sc:name "Frame Assembly" ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE005> ;
+    sc:isPerformedAt <http://unimaas-project.eu/site/SITE006> .
+
+## Sites ##
+
+<http://unimaas-project.eu/site/SITE005> a sc:Site ;
+    sc:id "SITE005" ;
+    sc:name "StructurePlant_Berlin" ;
+    sc:performs <http://unimaas-project.eu/process/PROC005> ;
+    sc:performs <http://unimaas-project.eu/process/PROC006> ;
+    sc:performs <http://unimaas-project.eu/process/PROC007> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC005> ;
+    sc:processingRate "450"^^xsd:decimal ;
+    sc:greenOperationLevel "0.7"^^xsd:decimal .
+
+<http://unimaas-project.eu/site/SITE006> a sc:Site ;
+    sc:id "SITE006" ;
+    sc:name "StructurePlant_Milan" ;
+    sc:performs <http://unimaas-project.eu/process/PROC005> ;
+    sc:performs <http://unimaas-project.eu/process/PROC006> ;
+    sc:performs <http://unimaas-project.eu/process/PROC007> ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC006> ;
+    sc:processingRate "400"^^xsd:decimal ;
+    sc:greenOperationLevel "0.75"^^xsd:decimal .
+
+##Process Configurations
+
+<http://unimaas-project.eu/processconfig/CONF005> a sc:ProcessConfiguration ;
+    sc:id "CONF005" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC005> ;
+    sc:usesResource <http://unimaas-project.eu/resource/RES003> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD106> ;
+    sc:hasNextStep <http://unimaas-project.eu/processconfig/CONF006> .
+
+<http://unimaas-project.eu/processconfig/CONF006> a sc:ProcessConfiguration ;
+    sc:id "CONF006" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC006> ;
+    sc:usesResource <http://unimaas-project.eu/resource/RES004> ;
+    sc:hasInput <http://unimaas-project.eu/product/PROD106> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD107> ;
+    sc:hasPreviousStep <http://unimaas-project.eu/processconfig/CONF005> ;
+    sc:hasNextStep <http://unimaas-project.eu/processconfig/CONF007> .
+
+<http://unimaas-project.eu/processconfig/CONF007> a sc:ProcessConfiguration ;
+    sc:id "CONF007" ;
+    sc:requiresProcess <http://unimaas-project.eu/process/PROC007> ;
+    sc:usesResource <http://unimaas-project.eu/resource/RES006> ;
+    sc:hasInput <http://unimaas-project.eu/product/PROD107> ;
+    sc:hasOutput <http://unimaas-project.eu/product/PROD103> ;
+    sc:hasPreviousStep <http://unimaas-project.eu/processconfig/CONF006> ;
+    sc:hasNextStep <http://unimaas-project.eu/processconfig/CONF008> .

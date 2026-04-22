@@ -1,0 +1,263 @@
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# ==== Suppliers Information/ Resources, Locations and Logistic Routes ====
+
+# ===== SUPPLIERS =====
+
+<http://unimaas-project.eu/supplier/SUP001> a sc:Supplier ;
+    sc:id "SUP001" ;
+    sc:name "MegaFoam Inc." ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC009> ;
+    sc:provides <http://unimaas-project.eu/resource/RES001> .
+
+<http://unimaas-project.eu/supplier/SUP002> a sc:Supplier ;
+    sc:id "SUP002" ;
+    sc:name "ThermoFoam Ltd." ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC010> ;
+    sc:provides <http://unimaas-project.eu/resource/RES001> .
+
+<http://unimaas-project.eu/supplier/SUP003> a sc:Supplier ;
+    sc:id "SUP003" ;
+    sc:name "LeatherWorld GmbH" ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC011> ;
+    sc:provides <http://unimaas-project.eu/resource/RES002> .
+
+<http://unimaas-project.eu/supplier/SUP004> a sc:Supplier ;
+    sc:id "SUP004" ;
+    sc:name "CoveredInleather Inc." ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC012> ;
+    sc:provides <http://unimaas-project.eu/resource/RES002> .
+
+<http://unimaas-project.eu/supplier/SUP005> a sc:Supplier ;
+    sc:id "SUP005" ;
+    sc:name "SteelMakers MX" ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC011> ;
+    sc:provides <http://unimaas-project.eu/resource/RES003> .
+
+<http://unimaas-project.eu/supplier/SUP006> a sc:Supplier ;
+    sc:id "SUP006" ;
+    sc:name "MadeofSteel MX" ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC013> ;
+    sc:provides <http://unimaas-project.eu/resource/RES003> .
+
+<http://unimaas-project.eu/supplier/SUP007> a sc:Supplier ;
+    sc:id "SUP007" ;
+    sc:name "Adient Skilled Workforce EU" ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC011> ;
+    sc:provides <http://unimaas-project.eu/resource/RES005> .
+
+<http://unimaas-project.eu/supplier/SUP008> a sc:Supplier ;
+    sc:id "SUP008" ;
+    sc:name "Adient Skilled Workforce EU 2" ;
+    sc:hasLocation <http://unimaas-project.eu/location/LOC014> ;
+    sc:provides <http://unimaas-project.eu/resource/RES005> .
+
+#=== Resources === #
+
+<http://unimaas-project.eu/resource/RES001> a sc:Resource ;
+    sc:id "RES001" ;
+    sc:name "Gel Memory Foam Block" ;
+    sc:resourceType "material" ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP001> ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP002> ;
+    sc:hasCharacteristic <http://unimaas-project.eu/characteristic/characteristicOfResource1> .
+
+<http://unimaas-project.eu/resource/RES002> a sc:Resource ;
+    sc:id "RES002" ;
+    sc:name "Leather Roll Premium" ;
+    sc:resourceType "material" ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP003> ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP004> .
+
+<http://unimaas-project.eu/resource/RES003> a sc:Resource ;
+    sc:id "RES003" ;
+    sc:name "Steel Tubes" ;
+    sc:resourceType "material" ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP005> ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP006> .
+
+<http://unimaas-project.eu/resource/RES004> a sc:Resource ;
+    sc:id "RES004" ;
+    sc:name "Adhesive Glue" ;
+    sc:resourceType "material" .
+
+<http://unimaas-project.eu/resource/RES005> a sc:Resource ;
+    sc:id "RES005" ;
+    sc:name "Skilled Upholsterer" ;
+    sc:resourceType "workforce" ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP007> ;
+    sc:isProvidedBy <http://unimaas-project.eu/supplier/SUP008> .
+
+<http://unimaas-project.eu/resource/RES006> a sc:Resource ;
+    sc:id "RES006" ;
+    sc:name "Mechanical Assembler" ;
+    sc:resourceType "workforce" .
+
+# ===== LOCATIONS =====
+
+<http://unimaas-project.eu/location/LOC001> a sc:Location ;
+    sc:id "LOC001" ;
+    sc:name "Slovakia" .
+
+<http://unimaas-project.eu/location/LOC002> a sc:Location ;
+    sc:id "LOC002" ;
+    sc:name "Paris" .
+
+<http://unimaas-project.eu/location/LOC003> a sc:Location ;
+    sc:id "LOC003" ;
+    sc:name "Athens" .
+
+<http://unimaas-project.eu/location/LOC004> a sc:Location ;
+    sc:id "LOC004" ;
+    sc:name "London" .
+
+<http://unimaas-project.eu/location/LOC005> a sc:Location ;
+    sc:id "LOC005" ;
+    sc:name "Berlin" .
+
+<http://unimaas-project.eu/location/LOC006> a sc:Location ;
+    sc:id "LOC006" ;
+    sc:name "Milan" .
+
+<http://unimaas-project.eu/location/LOC007> a sc:Location ;
+    sc:id "LOC007" ;
+    sc:name "Sofia" .
+
+<http://unimaas-project.eu/location/LOC008> a sc:Location ;
+    sc:id "LOC008" ;
+    sc:name "Budapest" .
+
+<http://unimaas-project.eu/location/LOC009> a sc:Location ;
+    sc:id "LOC009" ;
+    sc:name "Austria" .
+
+<http://unimaas-project.eu/location/LOC010> a sc:Location ;
+    sc:id "LOC010" ;
+    sc:name "Czech Republic" .
+
+<http://unimaas-project.eu/location/LOC011> a sc:Location ;
+    sc:id "LOC011" ;
+    sc:name "Germany" .
+
+<http://unimaas-project.eu/location/LOC012> a sc:Location ;
+    sc:id "LOC012" ;
+    sc:name "Italy" .
+
+<http://unimaas-project.eu/location/LOC013> a sc:Location ;
+    sc:id "LOC013" ;
+    sc:name "Netherlands" .
+
+<http://unimaas-project.eu/location/LOC014> a sc:Location ;
+    sc:id "LOC014" ;
+    sc:name "Barcelona" .
+
+#=== Logistic Routes
+
+<http://unimaas-project.eu/logisticroute/L2> a sc:LogisticRoute ;
+    sc:name "L2" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC003> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC004> .
+
+<http://unimaas-project.eu/logisticroute/L3> a sc:LogisticRoute ;
+    sc:name "L3" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC009> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC004> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP001_SITE001> a sc:LogisticRoute ;
+    sc:name "LR_SUP001_SITE001" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC009> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC001> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP001_SITE002> a sc:LogisticRoute ;
+    sc:name "LR_SUP001_SITE002" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC009> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC002> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP002_SITE001> a sc:LogisticRoute ;
+    sc:name "LR_SUP002_SITE001" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC010> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC001> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP002_SITE002> a sc:LogisticRoute ;
+    sc:name "LR_SUP002_SITE002" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC010> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC002> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP003_SITE003> a sc:LogisticRoute ;
+    sc:name "LR_SUP003_SITE003" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC011> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC003> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP003_SITE004> a sc:LogisticRoute ;
+    sc:name "LR_SUP003_SITE004" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC011> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC004> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP004_SITE003> a sc:LogisticRoute ;
+    sc:name "LR_SUP004_SITE003" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC012> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC003> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP004_SITE004> a sc:LogisticRoute ;
+    sc:name "LR_SUP004_SITE004" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC012> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC004> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP005_SITE005> a sc:LogisticRoute ;
+    sc:name "LR_SUP005_SITE005" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC011> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC005> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP005_SITE006> a sc:LogisticRoute ;
+    sc:name "LR_SUP005_SITE006" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC011> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC006> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP006_SITE005> a sc:LogisticRoute ;
+    sc:name "LR_SUP006_SITE005" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC013> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC005> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP006_SITE006> a sc:LogisticRoute ;
+    sc:name "LR_SUP006_SITE006" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC013> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC006> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP007_SITE003> a sc:LogisticRoute ;
+    sc:name "LR_SUP007_SITE003" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC011> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC003> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP007_SITE004> a sc:LogisticRoute ;
+    sc:name "LR_SUP007_SITE004" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC011> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC004> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP008_SITE003> a sc:LogisticRoute ;
+    sc:name "LR_SUP008_SITE003" ;
+    sc:transportationMode "fast truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC014> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC003> .
+
+<http://unimaas-project.eu/logisticroute/LR_SUP008_SITE004> a sc:LogisticRoute ;
+    sc:name "LR_SUP008_SITE004" ;
+    sc:transportationMode "slow truck" ;
+    sc:hasStartingPoint <http://unimaas-project.eu/location/LOC014> ;
+    sc:hasEndingPoint <http://unimaas-project.eu/location/LOC004> .
+
