@@ -1,4 +1,4 @@
-# Manufacturing Service Chain Ontology - CHANGELOG
+Ontology# Manufacturing Service Chain Ontology - CHANGELOG
 
 ## [1.0.0] - 2026-02-24
 ### Added
@@ -22,3 +22,10 @@
 ### Deprecated
 - Old classed EndPoduct and iNtermediaryProduct are deleted
 - Deleted unnecessary inverseOf relationships
+
+## [1.2.0] - 2026-05-27
+### Added
+- Prefixes for IOF and skos for clear IOF-alignment
+- Class mappings to classes of IOF and BFO
+- New sub-classes of Resource class: MaterialResource, HumanResource, SoftwareResource, EquipmentResource 
+- New class ResourceConf inserted between ProcessConfigurations and Resource nodes to allow multiple uses of the same resource in different configurations.
