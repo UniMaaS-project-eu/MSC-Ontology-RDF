@@ -1,0 +1,78 @@
+@prefix dcat:      <http://www.w3.org/ns/dcat#> .
+@prefix dcterms:  <http://purl.org/dc/terms/> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/> .
+@prefix sc:       <http://unimaas-project.eu/MSCOntology#> .
+@prefix mscmeta:  <http://unimaas-project.eu/MSCMetadata#> .
+
+
+<http://unimaas-project.eu/dataset/automotive-seat-supplychain>
+    a dcat:Dataset ;
+
+    dcterms:identifier "msc-seat-supplychain-v1" ;
+
+    dcterms:title
+        "Automotive Seat Manufacturing Supply Chain Dataset" ;
+
+    dcterms:description
+        "Synthetic multi-tier manufacturing supply-chain dataset
+         describing production sites, manufacturing processes,
+         products, and logistics routes for automotive seat manufacturing." ;
+
+    dcterms:creator "Adient" ;
+
+    dcterms:publisher
+        <http://unimaas-project.eu/org/ntua> ;
+
+    dcterms:created "2026-05-20"^^xsd:date ;
+
+    dcterms:modified "2026-05-27"^^xsd:date ;
+
+    dcterms:license
+        <http://creativecommons.org/licenses/by/4.0/> ;
+
+    dcat:keyword
+        "manufacturing",
+        "supply chain",
+        "logistics",
+        "ontology",
+        "automotive" ;
+
+    dcat:theme
+        <http://example.org/theme/automotive-manufacturing> ;
+
+    dcterms:conformsTo
+        <http://unimaas-project.eu/MSCOntology> ;
+
+    mscmeta:syntheticDataset
+        "true"^^xsd:boolean ;
+
+    mscmeta:dataOrigin
+        "Excel spreadsheets provided by Adient, transformed into RDF format." ;
+
+    mscmeta:networkType
+        "multi-stage service chain network" ;
+
+    mscmeta:containsClass sc:Site ;
+    mscmeta:containsClass sc:Process ;
+    mscmeta:containsClass sc:Product ;
+    mscmeta:containsClass sc:ProcessConfiguration ;
+    mscmeta:containsClass sc:LogisticRoute ;
+
+    mscmeta:containsProperty sc:suppliesTo ;
+    mscmeta:containsProperty sc:performs ;
+    mscmeta:containsProperty sc:hasStartingPoint ;
+    mscmeta:containsProperty sc:hasEndingPoint ;
+
+    mscmeta:entityCount
+        58 ;
+
+    mscmeta:tripleCount
+        2450 ;
+
+    <http://unimaas-project.eu/dataset/automotive-seat-supplychain>    
+        dcat:distribution 
+            <http://unimaas-project.eu/distribution/seat-ttl> .

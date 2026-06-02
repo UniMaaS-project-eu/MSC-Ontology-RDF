@@ -1,0 +1,41 @@
+@prefix mscmeta:  <http://unimaas-project.eu/MSCMetadata#> .
+
+# MSC METADATA EXTENSION
+mscmeta:containsClass a owl:ObjectProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range owl:Class ;
+    rdfs:label "contains class" ;
+    rdfs:comment
+        "Indicates ontology classes instantiated in the dataset." .
+
+mscmeta:containsProperty a owl:ObjectProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range rdf:Property ;
+    rdfs:label "contains property" ;
+    rdfs:comment
+        "Indicates ontology properties instantiated in the dataset." .
+
+mscmeta:syntheticDataset a owl:DatatypeProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "synthetic dataset" .
+
+mscmeta:dataOrigin a owl:DatatypeProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:string ;
+    rdfs:label "data origin" .
+
+mscmeta:networkType a owl:DatatypeProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:string ;
+    rdfs:label "network type" .
+
+mscmeta:entityCount a owl:DatatypeProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:integer ;
+    rdfs:label "entity count" .
+
+mscmeta:tripleCount a owl:DatatypeProperty ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:range xsd:integer ;
+    rdfs:label "triple count" .
