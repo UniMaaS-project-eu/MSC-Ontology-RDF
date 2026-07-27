@@ -36,6 +36,7 @@
 - New object property hasCharacteristicType linking a Characteristic instance to its CharacteristicType.
 - New datatype properties characteristicValue (on Characteristic) and unit (on CharacteristicType), so characteristic instances can carry literal values and their types can declare units.
 - New object properties subClassOf and superClassOf (Resource to Resource), declared as owl:inverseOf each other, enabling instance-level specialization hierarchies of resources (e.g. supplier-specific material variants under a generic material resource).
+- New object property siteHasResource and suppliesTo, connecting sites to resources and sites to sites, respectively.
 - ProcessConfiguration, ResourceConf, and LogisticRoute are now subclasses of ConfigurableEntity, so hasCharacteristic and pilot datatype properties formally cover them.
 - Datatype properties introduced to support the four pilot datasets.
 
