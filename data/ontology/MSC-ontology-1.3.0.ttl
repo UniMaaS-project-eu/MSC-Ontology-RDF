@@ -244,6 +244,17 @@ sc:performs a owl:ObjectProperty ;
     rdfs:range sc:Process ;
     owl:inverseOf sc:isPerformedAt .
 
+sc:siteHasResource a owl:ObjectProperty ;
+    rdfs:label "site has resource" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:Resource .
+
+sc:suppliesTo a owl:ObjectProperty ;
+    rdfs:label "supplies to" ;
+    rdfs:comment "Direct supply/delivery flow from one site to another (for Adient) ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:Site .
+
 sc:hasDevice a owl:ObjectProperty ;
     rdfs:label "has device" ;
     rdfs:domain sc:Site ;
