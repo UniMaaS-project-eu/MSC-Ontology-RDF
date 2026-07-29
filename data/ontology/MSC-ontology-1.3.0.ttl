@@ -575,3 +575,33 @@ sc:approxTransportCostFullTruck a owl:DatatypeProperty ;
     rdfs:label "approximate transport cost for full trucks" ;
     rdfs:domain sc:LogisticRoute ;
     rdfs:range xsd:integer .
+
+sc:status a owl:DatatypeProperty ;
+    rdfs:label "current lifecycle stage of the product" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range xsd:string .
+
+sc:numberOfUses a owl:DatatypeProperty ;
+    rdfs:label "number of usage cycles" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range xsd:integer .
+
+sc:condition a owl:DatatypeProperty ;
+    rdfs:label "physical condition of the product" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range xsd:string .
+
+sc:currentLocation a owl:DatatypeProperty ;
+    rdfs:label "current facility or warehouse location" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range xsd:string .
+
+sc:lastMaintenanceDate a owl:DatatypeProperty ;
+    rdfs:label "date of last maintenance" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range xsd:date .
+
+sc:lifecycleCarbonFootprint a owl:DatatypeProperty ;
+    rdfs:label "date of last maintenance" ;
+    rdfs:domain sc:Resource ;
+    rdfs:range xsd:decimal .
