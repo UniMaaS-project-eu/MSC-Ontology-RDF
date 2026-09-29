@@ -1,0 +1,126 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scaegean: <http://unimaas-project.eu/MSCOntology/data/aegean/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scaegean:char_mro_l_daily_workhours_per_bay a sc:Characteristic ;
+    sc:characteristicValue 64 ;
+    sc:hasCharacteristicType scaegean:ctype_daily_workhours_per_bay .
+
+scaegean:char_mro_l_effective_workhour_charge_rate a sc:Characteristic ;
+    sc:characteristicValue 62 ;
+    sc:hasCharacteristicType scaegean:ctype_effective_workhour_charge_rate .
+
+scaegean:char_mro_l_hours_per_shift a sc:Characteristic ;
+    sc:characteristicValue 8 ;
+    sc:hasCharacteristicType scaegean:ctype_hours_per_shift .
+
+scaegean:char_mro_l_net_schedulable_bays a sc:Characteristic ;
+    sc:characteristicValue 2 ;
+    sc:hasCharacteristicType scaegean:ctype_net_schedulable_bays .
+
+scaegean:char_mro_l_operating_days_per_week a sc:Characteristic ;
+    sc:characteristicValue 5 ;
+    sc:hasCharacteristicType scaegean:ctype_operating_days_per_week .
+
+scaegean:char_mro_l_reserved_aog_bays a sc:Characteristic ;
+    sc:characteristicValue 1 ;
+    sc:hasCharacteristicType scaegean:ctype_reserved_aog_bays .
+
+scaegean:char_mro_l_shifts_per_day a sc:Characteristic ;
+    sc:characteristicValue 1 ;
+    sc:hasCharacteristicType scaegean:ctype_shifts_per_day .
+
+scaegean:char_mro_l_technicians_per_bay a sc:Characteristic ;
+    sc:characteristicValue 8 ;
+    sc:hasCharacteristicType scaegean:ctype_technicians_per_bay .
+
+scaegean:char_mro_l_total_bays a sc:Characteristic ;
+    sc:characteristicValue 3 ;
+    sc:hasCharacteristicType scaegean:ctype_total_bays .
+
+scaegean:char_mro_l_workhour_rate_multiplier a sc:Characteristic ;
+    sc:characteristicValue 1.0 ;
+    sc:hasCharacteristicType scaegean:ctype_workhour_rate_multiplier .
+
+scaegean:ctype_daily_workhours_per_bay a sc:CharacteristicType ;
+    rdfs:label "Daily Workhours Per Bay" ;
+    sc:name "dailyWorkhoursPerBay" ;
+    sc:unit "wh/bay/day" ;
+    skos:note "Derived: shifts/day × hrs/shift × techs/bay." .
+
+scaegean:ctype_effective_workhour_charge_rate a sc:CharacteristicType ;
+    rdfs:label "Effective Workhour Charge Rate" ;
+    sc:name "effectiveWorkhourChargeRate" ;
+    sc:unit "€/wh" ;
+    skos:note "Derived: base rate × multiplier." .
+
+scaegean:ctype_hours_per_shift a sc:CharacteristicType ;
+    rdfs:label "Hours Per Shift" ;
+    sc:name "hoursPerShift" ;
+    sc:unit "hrs/shift" ;
+    skos:note "Standard 8-h shift for Low/Medium. High uses 7.5 h to allow 30-min overlap/handover between shifts (LHT Frankfurt model)." .
+
+scaegean:ctype_net_schedulable_bays a sc:CharacteristicType ;
+    rdfs:label "Net Schedulable Bays" ;
+    sc:name "netSchedulableBays" ;
+    sc:unit "bays" ;
+    skos:note "Effective bays available for planned project scheduling." .
+
+scaegean:ctype_operating_days_per_week a sc:CharacteristicType ;
+    rdfs:label "Operating Days Per Week" ;
+    sc:name "operatingDaysPerWeek" ;
+    sc:unit "days/week" ;
+    skos:note "Low: Mon–Fri (single-shift MRO, no weekend ops). Medium: Mon–Sat (2-shift). High: 7-day continuous (LHT Frankfurt operates 3 shifts 24/7)." .
+
+scaegean:ctype_reserved_aog_bays a sc:CharacteristicType ;
+    rdfs:label "Reserved AOG Bays" ;
+    sc:name "reservedAOGBays" ;
+    sc:unit "bays" ;
+    skos:note "Kept free for unplanned inductions. High-cost MRO reserves 2 due to larger AOG customer base." .
+
+scaegean:ctype_shifts_per_day a sc:CharacteristicType ;
+    rdfs:label "Shifts Per Day" ;
+    sc:name "shiftsPerDay" ;
+    sc:unit "shifts/day" ;
+    skos:note "Low: 1 day-shift. Medium: 2 shifts (day+night). High: 3 shifts (LHT Frankfurt: 3 × 7.5 h around the clock)." .
+
+scaegean:ctype_technicians_per_bay a sc:CharacteristicType ;
+    rdfs:label "Technicians Per Bay" ;
+    sc:name "techniciansPerBay" ;
+    sc:unit "techs/bay" ;
+    skos:note "Typical base-maintenance crew: 6–15 techs/bay. These figures represent average across mixed workscope." .
+
+scaegean:ctype_total_bays a sc:CharacteristicType ;
+    rdfs:label "Total Bays" ;
+    sc:name "totalBays" ;
+    sc:unit "bays" .
+
+scaegean:ctype_workhour_rate_multiplier a sc:CharacteristicType ;
+    rdfs:label "Workhour Rate Multiplier" ;
+    sc:name "workhourRateMultiplier" ;
+    sc:unit "× baseline" .
+
+scaegean:process_aircraft_maintenance a sc:Process ;
+    rdfs:label "Aircraft Maintenance" ;
+    sc:isPerformedAt scaegean:site_mro_l ;
+    sc:name "Aircraft Maintenance" ;
+    sc:nodeId "PROC-AM-001" .
+
+scaegean:site_mro_l a sc:Site ;
+    rdfs:label "Low-Cost MRO" ;
+    sc:hasCharacteristic scaegean:char_mro_l_daily_workhours_per_bay,
+        scaegean:char_mro_l_effective_workhour_charge_rate,
+        scaegean:char_mro_l_hours_per_shift,
+        scaegean:char_mro_l_net_schedulable_bays,
+        scaegean:char_mro_l_operating_days_per_week,
+        scaegean:char_mro_l_reserved_aog_bays,
+        scaegean:char_mro_l_shifts_per_day,
+        scaegean:char_mro_l_technicians_per_bay,
+        scaegean:char_mro_l_total_bays,
+        scaegean:char_mro_l_workhour_rate_multiplier ;
+    sc:name "Low-Cost MRO" ;
+    sc:nodeId "MRO-L" ;
+    sc:performs scaegean:process_aircraft_maintenance .
+

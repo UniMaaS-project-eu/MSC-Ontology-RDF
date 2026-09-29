@@ -1,0 +1,76 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scadient: <http://unimaas-project.eu/MSCOntology/data/adient/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scadient:pconf_3 a sc:ProcessConfiguration ;
+    sc:hasNextStep scadient:pconf_4 ;
+    sc:hasOutput scadient:product_metal_structures ;
+    sc:hasPreviousStep scadient:pconf_1,
+        scadient:pconf_2 ;
+    sc:name "PC3" ;
+    sc:requiresProcess scadient:process_metal_structures_making .
+
+scadient:route_12_37 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 889 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_37 ;
+    sc:hasStartingPoint scadient:site_12 ;
+    sc:leadTimeDays 2.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 0.0 ;
+    sc:qDaysBetweenReceivingsForFTLs 0.0 ;
+    sc:routeId "12_37" ;
+    sc:transportDistance 889 .
+
+scadient:route_33_37 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 516 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_37 ;
+    sc:hasStartingPoint scadient:site_33 ;
+    sc:leadTimeDays 1.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 5.0 ;
+    sc:qDaysBetweenReceivingsForFTLs 1.4 ;
+    sc:routeId "33_37" ;
+    sc:transportDistance 516 .
+
+scadient:route_972_37 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 775 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_37 ;
+    sc:hasStartingPoint scadient:site_972 ;
+    sc:leadTimeDays 2.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 181.5 ;
+    sc:qDaysBetweenReceivingsForFTLs 49.5 ;
+    sc:routeId "972_37" ;
+    sc:transportDistance 775 .
+
+scadient:suppliesTo a owl:ObjectProperty ;
+    rdfs:label "supplies to" ;
+    rdfs:comment "Direct supply/delivery flow from one site to another (from Neo4j [:TO] relationship)" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:Site .
+
+scadient:product_metal_structures a sc:Product ;
+    sc:name "metal structures" .
+
+scadient:process_metal_structures_making a sc:Process ;
+    sc:isPerformedAt scadient:site_37 ;
+    sc:name "metal structures making" .
+
+scadient:site_37 a sc:Site ;
+    sc:country "ES" ;
+    sc:entity "internal" ;
+    sc:nodeId 37 ;
+    sc:performs scadient:process_metal_structures_making ;
+    sc:productionRate "weekly batches" ;
+    sc:siteType "metal" ;
+    sc:tier 2 ;
+    scadient:suppliesTo scadient:site_50 .
+

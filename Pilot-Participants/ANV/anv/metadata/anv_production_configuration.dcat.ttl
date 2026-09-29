@@ -1,0 +1,112 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mscmeta: <http://unimaas-project.eu/MSCMetadata#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scanv: <http://unimaas-project.eu/MSCOntology/data/anv/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://unimaas-project.eu/dataset/anv/anv_production_configuration> a void:Dataset,
+        dcat:Dataset ;
+    dcterms:conformsTo <http://unimaas-project.eu/MSCMetadata/0.2.0>,
+        <http://unimaas-project.eu/MSCOntology/1.2.0> ;
+    dcterms:creator <http://unimaas-project.eu/participant/anv> ;
+    dcterms:description "200 3D-printed concrete street-furniture products with the process configurations (printing time, energy/transport/total cost) and resource configurations (material quantity, reinforcement, labour cost) that produce them."@en ;
+    dcterms:identifier "anv_production_configuration" ;
+    dcterms:issued "2026-09-29"^^xsd:date ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-09-29"^^xsd:date ;
+    dcterms:publisher <http://unimaas-project.eu/participant/anv> ;
+    dcterms:requires <http://unimaas-project.eu/dataset/anv/anv_site_capabilities> ;
+    dcterms:title "ANV product portfolio and process configurations"@en ;
+    void:classPartition [ void:class sc:ProcessConfiguration ;
+            void:entities 200 ],
+        [ void:class sc:ResourceConf ;
+            void:entities 600 ],
+        [ void:class sc:Product ;
+            void:entities 200 ] ;
+    void:entities 1000 ;
+    void:propertyPartition [ void:property sc:dimensions ;
+            void:triples 200 ],
+        [ void:property sc:quantity ;
+            void:triples 200 ],
+        [ void:property sc:usesResourceConf ;
+            void:triples 600 ],
+        [ void:property sc:hasOutput ;
+            void:triples 200 ],
+        [ void:property sc:wallThickness ;
+            void:triples 200 ],
+        [ void:property sc:resourceCostANVValidated ;
+            void:triples 200 ],
+        [ void:property sc:transportCostANVValidated ;
+            void:triples 200 ],
+        [ void:property sc:totalPrintingTime ;
+            void:triples 200 ],
+        [ void:property rdf:type ;
+            void:triples 1000 ],
+        [ void:property sc:energyCost ;
+            void:triples 200 ],
+        [ void:property sc:requiresProcess ;
+            void:triples 200 ],
+        [ void:property rdfs:label ;
+            void:triples 1000 ],
+        [ void:property sc:reinforcementQuantity ;
+            void:triples 200 ],
+        [ void:property sc:refersToResource ;
+            void:triples 600 ],
+        [ void:property sc:resourceCost ;
+            void:triples 400 ],
+        [ void:property sc:transportCost ;
+            void:triples 200 ],
+        [ void:property sc:totalCost ;
+            void:triples 200 ] ;
+    void:triples 6000 ;
+    void:vocabulary sc: ;
+    mscmeta:dataOrigin "ANV pilot spreadsheets (supplier list, material data, product/process cost sheets) transformed to RDF with the MSC ontology; partitioned per data owner for the DMS simulation." ;
+    mscmeta:ingestionTarget "CentralKG" ;
+    mscmeta:materialCategory scanv:resource_standard_concrete,
+        scanv:resource_uhpc_concrete ;
+    mscmeta:mscFacet "ProcessConfiguration" ;
+    mscmeta:mscOntologyVersion "1.2.0" ;
+    mscmeta:pilot "anv" ;
+    mscmeta:productFamily "bench",
+        "bike shelter",
+        "bollard",
+        "bus stop shelter",
+        "guard house",
+        "litter bin enclosure",
+        "planter",
+        "pump house",
+        "retaining wall panel",
+        "seating wall",
+        "stairs",
+        "storage shed",
+        "transformer station enclosure",
+        "utility enclosure",
+        "wayfinding totem" ;
+    mscmeta:sharedEntity scanv:process_3d_printing,
+        scanv:resource_3d_printer,
+        scanv:resource_labour,
+        scanv:resource_standard_concrete,
+        scanv:resource_uhpc_concrete ;
+    mscmeta:syntheticDataset false ;
+    dcat:distribution <http://unimaas-project.eu/dataset/anv/anv_production_configuration/distribution/ttl> ;
+    dcat:keyword "3D concrete printing"@en,
+        "ProcessConfiguration"@en,
+        "construction"@en,
+        "manufacturing service chain"@en,
+        "street furniture"@en ;
+    dcat:version "1.0.0" .
+
+<http://unimaas-project.eu/dataset/anv/anv_production_configuration/distribution/ttl> a dcat:Distribution ;
+    dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+    dcat:byteSize 242800 ;
+    dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> .
+
+<http://unimaas-project.eu/participant/anv> a foaf:Organization ;
+    dcterms:identifier "did:web:edc-proxy-anv%3A80:anv" ;
+    foaf:name "ANV" .
+

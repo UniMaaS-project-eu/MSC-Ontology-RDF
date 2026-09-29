@@ -1,0 +1,28 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scanv: <http://unimaas-project.eu/MSCOntology/data/anv/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scanv:location_monterrey a sc:Location ;
+    rdfs:label "Monterrey" .
+
+scanv:supplier_cemex a sc:Supplier ;
+    rdfs:label "cemex" ;
+    sc:hasLocation scanv:location_monterrey ;
+    sc:minimumTransportQuantity 10000 ;
+    sc:provides scanv:resource_standard_concrete_cemex ;
+    sc:supplyLeadTime 35 .
+
+scanv:resource_standard_concrete sc:superClassOf scanv:resource_standard_concrete_cemex ;
+    skos:narrower scanv:resource_standard_concrete_cemex .
+
+scanv:resource_standard_concrete_cemex a sc:MaterialResource,
+        sc:Resource ;
+    rdfs:label "Standard Concrete (cemex)" ;
+    sc:certificationCompliance 8 ;
+    sc:costPerKg 0.5 ;
+    sc:isProvidedBy scanv:supplier_cemex ;
+    sc:subClassOf scanv:resource_standard_concrete ;
+    skos:broader scanv:resource_standard_concrete .
+

@@ -1,0 +1,91 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mscmeta: <http://unimaas-project.eu/MSCMetadata#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scanv: <http://unimaas-project.eu/MSCOntology/data/anv/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://unimaas-project.eu/dataset/anv/anv_cemex_offering> a void:Dataset,
+        dcat:Dataset ;
+    dcterms:conformsTo <http://unimaas-project.eu/MSCMetadata/0.2.0>,
+        <http://unimaas-project.eu/MSCOntology/1.2.0> ;
+    dcterms:creator <http://unimaas-project.eu/participant/cemex> ;
+    dcterms:description "Supplier self-declaration of cemex: location, lead time, minimum transport quantity and technical/commercial data of the offered materials (Standard Concrete (cemex)), linked to ANV's generic material categories."@en ;
+    dcterms:identifier "anv_cemex_offering" ;
+    dcterms:issued "2026-09-29"^^xsd:date ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-09-29"^^xsd:date ;
+    dcterms:publisher <http://unimaas-project.eu/participant/cemex> ;
+    dcterms:requires <http://unimaas-project.eu/dataset/anv/anv_site_capabilities> ;
+    dcterms:spatial scanv:location_monterrey ;
+    dcterms:title "cemex material offering for ANV 3D printing"@en ;
+    void:classPartition [ void:class sc:Resource ;
+            void:entities 1 ],
+        [ void:class sc:MaterialResource ;
+            void:entities 1 ],
+        [ void:class sc:Location ;
+            void:entities 1 ],
+        [ void:class sc:Supplier ;
+            void:entities 1 ] ;
+    void:entities 3 ;
+    void:propertyPartition [ void:property rdf:type ;
+            void:triples 4 ],
+        [ void:property sc:costPerKg ;
+            void:triples 1 ],
+        [ void:property sc:superClassOf ;
+            void:triples 1 ],
+        [ void:property sc:certificationCompliance ;
+            void:triples 1 ],
+        [ void:property skos:narrower ;
+            void:triples 1 ],
+        [ void:property sc:minimumTransportQuantity ;
+            void:triples 1 ],
+        [ void:property skos:broader ;
+            void:triples 1 ],
+        [ void:property sc:hasLocation ;
+            void:triples 1 ],
+        [ void:property rdfs:label ;
+            void:triples 3 ],
+        [ void:property sc:isProvidedBy ;
+            void:triples 1 ],
+        [ void:property sc:provides ;
+            void:triples 1 ],
+        [ void:property sc:supplyLeadTime ;
+            void:triples 1 ],
+        [ void:property sc:subClassOf ;
+            void:triples 1 ] ;
+    void:triples 18 ;
+    void:vocabulary sc: ;
+    mscmeta:aboutLocation scanv:location_monterrey ;
+    mscmeta:aboutResource scanv:resource_standard_concrete_cemex ;
+    mscmeta:aboutSupplier scanv:supplier_cemex ;
+    mscmeta:dataOrigin "ANV pilot spreadsheets (supplier list, material data, product/process cost sheets) transformed to RDF with the MSC ontology; partitioned per data owner for the DMS simulation." ;
+    mscmeta:ingestionTarget "CentralKG" ;
+    mscmeta:materialCategory scanv:resource_standard_concrete ;
+    mscmeta:mscFacet "Supplier" ;
+    mscmeta:mscOntologyVersion "1.2.0" ;
+    mscmeta:pilot "anv" ;
+    mscmeta:sharedEntity scanv:resource_standard_concrete ;
+    mscmeta:syntheticDataset false ;
+    dcat:distribution <http://unimaas-project.eu/dataset/anv/anv_cemex_offering/distribution/ttl> ;
+    dcat:keyword "3D concrete printing"@en,
+        "Supplier"@en,
+        "construction"@en,
+        "manufacturing service chain"@en,
+        "street furniture"@en ;
+    dcat:version "1.0.0" .
+
+<http://unimaas-project.eu/dataset/anv/anv_cemex_offering/distribution/ttl> a dcat:Distribution ;
+    dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+    dcat:byteSize 1075 ;
+    dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> .
+
+<http://unimaas-project.eu/participant/cemex> a foaf:Organization ;
+    dcterms:identifier "did:web:edc-proxy-cemex%3A80:cemex" ;
+    foaf:name "cemex" .
+

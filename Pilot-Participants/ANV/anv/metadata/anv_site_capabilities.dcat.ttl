@@ -1,0 +1,77 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mscmeta: <http://unimaas-project.eu/MSCMetadata#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scanv: <http://unimaas-project.eu/MSCOntology/data/anv/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://unimaas-project.eu/dataset/anv/anv_site_capabilities> a void:Dataset,
+        dcat:Dataset ;
+    dcterms:conformsTo <http://unimaas-project.eu/MSCMetadata/0.2.0>,
+        <http://unimaas-project.eu/MSCOntology/1.2.0> ;
+    dcterms:creator <http://unimaas-project.eu/participant/anv> ;
+    dcterms:description "ANV 3D-printing site, the 3D printing process it performs and the generic resources it uses (3D printer, labour, material categories Standard Concrete and UHPC Concrete)."@en ;
+    dcterms:identifier "anv_site_capabilities" ;
+    dcterms:issued "2026-09-29"^^xsd:date ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-09-29"^^xsd:date ;
+    dcterms:publisher <http://unimaas-project.eu/participant/anv> ;
+    dcterms:title "ANV site, process and resource catalogue"@en ;
+    void:classPartition [ void:class sc:HumanResource ;
+            void:entities 1 ],
+        [ void:class sc:Resource ;
+            void:entities 4 ],
+        [ void:class sc:Process ;
+            void:entities 1 ],
+        [ void:class sc:Site ;
+            void:entities 1 ],
+        [ void:class sc:EquipmentResource ;
+            void:entities 1 ],
+        [ void:class sc:MaterialResource ;
+            void:entities 2 ] ;
+    void:entities 6 ;
+    void:propertyPartition [ void:property rdf:type ;
+            void:triples 10 ],
+        [ void:property rdfs:label ;
+            void:triples 6 ],
+        [ void:property sc:isPerformedAt ;
+            void:triples 1 ],
+        [ void:property sc:performs ;
+            void:triples 1 ] ;
+    void:triples 18 ;
+    void:vocabulary sc: ;
+    mscmeta:aboutProcess scanv:process_3d_printing ;
+    mscmeta:aboutResource scanv:resource_3d_printer,
+        scanv:resource_labour,
+        scanv:resource_standard_concrete,
+        scanv:resource_uhpc_concrete ;
+    mscmeta:aboutSite scanv:site_anv ;
+    mscmeta:dataOrigin "ANV pilot spreadsheets (supplier list, material data, product/process cost sheets) transformed to RDF with the MSC ontology; partitioned per data owner for the DMS simulation." ;
+    mscmeta:ingestionTarget "CentralKG" ;
+    mscmeta:materialCategory scanv:resource_standard_concrete,
+        scanv:resource_uhpc_concrete ;
+    mscmeta:mscFacet "Site" ;
+    mscmeta:mscOntologyVersion "1.2.0" ;
+    mscmeta:pilot "anv" ;
+    mscmeta:syntheticDataset false ;
+    dcat:distribution <http://unimaas-project.eu/dataset/anv/anv_site_capabilities/distribution/ttl> ;
+    dcat:keyword "3D concrete printing"@en,
+        "Site"@en,
+        "construction"@en,
+        "manufacturing service chain"@en,
+        "street furniture"@en ;
+    dcat:version "1.0.0" .
+
+<http://unimaas-project.eu/dataset/anv/anv_site_capabilities/distribution/ttl> a dcat:Distribution ;
+    dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+    dcat:byteSize 803 ;
+    dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> .
+
+<http://unimaas-project.eu/participant/anv> a foaf:Organization ;
+    dcterms:identifier "did:web:edc-proxy-anv%3A80:anv" ;
+    foaf:name "ANV" .
+

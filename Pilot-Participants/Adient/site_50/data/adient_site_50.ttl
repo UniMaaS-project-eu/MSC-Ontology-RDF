@@ -1,0 +1,119 @@
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scadient: <http://unimaas-project.eu/MSCOntology/data/adient/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scadient:pconf_3 a sc:ProcessConfiguration ;
+    sc:hasNextStep scadient:pconf_4 ;
+    sc:hasOutput scadient:product_metal_structures ;
+    sc:hasPreviousStep scadient:pconf_1,
+        scadient:pconf_2 ;
+    sc:name "PC3" ;
+    sc:requiresProcess scadient:process_metal_structures_making .
+
+scadient:route_11_50 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 165 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_50 ;
+    sc:hasStartingPoint scadient:site_11 ;
+    sc:leadTimeDays 0.5 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 0.0 ;
+    sc:qDaysBetweenReceivingsForFTLs 0.0 ;
+    sc:routeId "11_50" ;
+    sc:transportDistance 165 .
+
+scadient:route_16_50 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 1013 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_50 ;
+    sc:hasStartingPoint scadient:site_16 ;
+    sc:leadTimeDays 2.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 0.0 ;
+    sc:qDaysBetweenReceivingsForFTLs 0.0 ;
+    sc:routeId "16_50" ;
+    sc:transportDistance 1013 .
+
+scadient:route_33_50 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 2923 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_50 ;
+    sc:hasStartingPoint scadient:site_33 ;
+    sc:leadTimeDays 6.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 12.9 ;
+    sc:qDaysBetweenReceivingsForFTLs 3.5 ;
+    sc:routeId "33_50" ;
+    sc:transportDistance 2923 .
+
+scadient:route_34_50 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 1005 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "GRP" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_50 ;
+    sc:hasStartingPoint scadient:site_34 ;
+    sc:leadTimeDays 2.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 0.0 ;
+    sc:qDaysBetweenReceivingsForFTLs 0.0 ;
+    sc:routeId "34_50" ;
+    sc:transportDistance 1005 .
+
+scadient:route_37_50 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 993 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "GRP" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_50 ;
+    sc:hasStartingPoint scadient:site_37 ;
+    sc:leadTimeDays 2.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 181.5 ;
+    sc:qDaysBetweenReceivingsForFTLs 49.5 ;
+    sc:routeId "37_50" ;
+    sc:transportDistance 993 .
+
+scadient:route_730_50 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 633 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_50 ;
+    sc:hasStartingPoint scadient:site_730 ;
+    sc:leadTimeDays 2.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 0.0 ;
+    sc:qDaysBetweenReceivingsForFTLs 0.0 ;
+    sc:routeId "730_50" ;
+    sc:transportDistance 633 .
+
+scadient:route_972_50 a sc:LogisticRoute ;
+    sc:approxTransportCostFullTruck 1969 ;
+    sc:emptyTruckCap 363 ;
+    sc:freightMode "FTL" ;
+    sc:fullTruckCap 99 ;
+    sc:hasEndingPoint scadient:site_50 ;
+    sc:hasStartingPoint scadient:site_972 ;
+    sc:leadTimeDays 4.0 ;
+    sc:qDaysBetweenEmptyReturnsFTLs 363.0 ;
+    sc:qDaysBetweenReceivingsForFTLs 99.0 ;
+    sc:routeId "972_50" ;
+    sc:transportDistance 1969 .
+
+scadient:product_metal_structures a sc:Product ;
+    sc:name "metal structures" .
+
+scadient:process_metal_structures_making a sc:Process ;
+    sc:isPerformedAt scadient:site_50 ;
+    sc:name "metal structures making" .
+
+scadient:site_50 a sc:Site ;
+    sc:country "RO" ;
+    sc:entity "internal" ;
+    sc:nodeId 50 ;
+    sc:performs scadient:process_metal_structures_making ;
+    sc:productionRate "weekly batches" ;
+    sc:siteType "metal" ;
+    sc:tier 2 .
+

@@ -1,0 +1,35 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scadient: <http://unimaas-project.eu/MSCOntology/data/adient/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scadient:pconf_2 a sc:ProcessConfiguration ;
+    sc:hasNextStep scadient:pconf_3 ;
+    sc:hasOutput scadient:product_metal_mechanisms ;
+    sc:name "PC2" ;
+    sc:requiresProcess scadient:process_metal_mechanisms_making .
+
+scadient:suppliesTo a owl:ObjectProperty ;
+    rdfs:label "supplies to" ;
+    rdfs:comment "Direct supply/delivery flow from one site to another (from Neo4j [:TO] relationship)" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:Site .
+
+scadient:product_metal_mechanisms a sc:Product ;
+    sc:name "metal mechanisms" .
+
+scadient:site_12 a sc:Site ;
+    sc:country "HU" ;
+    sc:entity "internal" ;
+    sc:nodeId 12 ;
+    sc:performs scadient:process_metal_mechanisms_making ;
+    sc:productionRate "fortnightly batches" ;
+    sc:siteType "metal" ;
+    sc:tier 2 ;
+    scadient:suppliesTo scadient:site_37 .
+
+scadient:process_metal_mechanisms_making a sc:Process ;
+    sc:isPerformedAt scadient:site_12 ;
+    sc:name "metal mechanisms making" .
+

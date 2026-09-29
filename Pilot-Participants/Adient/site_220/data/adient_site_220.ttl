@@ -1,0 +1,37 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scadient: <http://unimaas-project.eu/MSCOntology/data/adient/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scadient:pconf_3 a sc:ProcessConfiguration ;
+    sc:hasNextStep scadient:pconf_4 ;
+    sc:hasOutput scadient:product_metal_structures ;
+    sc:hasPreviousStep scadient:pconf_1,
+        scadient:pconf_2 ;
+    sc:name "PC3" ;
+    sc:requiresProcess scadient:process_metal_structures_making .
+
+scadient:suppliesTo a owl:ObjectProperty ;
+    rdfs:label "supplies to" ;
+    rdfs:comment "Direct supply/delivery flow from one site to another (from Neo4j [:TO] relationship)" ;
+    rdfs:domain sc:Site ;
+    rdfs:range sc:Site .
+
+scadient:product_metal_structures a sc:Product ;
+    sc:name "metal structures" .
+
+scadient:site_220 a sc:Site ;
+    sc:country "CZ" ;
+    sc:entity "external" ;
+    sc:nodeId 220 ;
+    sc:performs scadient:process_metal_structures_making ;
+    sc:productionRate "weekly batches" ;
+    sc:siteType "3p" ;
+    scadient:suppliesTo scadient:site_14,
+        scadient:site_64 .
+
+scadient:process_metal_structures_making a sc:Process ;
+    sc:isPerformedAt scadient:site_220 ;
+    sc:name "metal structures making" .
+

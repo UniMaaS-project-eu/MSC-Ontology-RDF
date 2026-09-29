@@ -1,0 +1,28 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scanv: <http://unimaas-project.eu/MSCOntology/data/anv/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+scanv:location_warsaw a sc:Location ;
+    rdfs:label "Warsaw" .
+
+scanv:supplier_holcim a sc:Supplier ;
+    rdfs:label "Holcim" ;
+    sc:hasLocation scanv:location_warsaw ;
+    sc:minimumTransportQuantity 2500 ;
+    sc:provides scanv:resource_uhpc_concrete_holcim ;
+    sc:supplyLeadTime 17 .
+
+scanv:resource_uhpc_concrete sc:superClassOf scanv:resource_uhpc_concrete_holcim ;
+    skos:narrower scanv:resource_uhpc_concrete_holcim .
+
+scanv:resource_uhpc_concrete_holcim a sc:MaterialResource,
+        sc:Resource ;
+    rdfs:label "UHPC Concrete (Holcim)" ;
+    sc:certificationCompliance 8 ;
+    sc:costPerKg 0.37 ;
+    sc:isProvidedBy scanv:supplier_holcim ;
+    sc:subClassOf scanv:resource_uhpc_concrete ;
+    skos:broader scanv:resource_uhpc_concrete .
+

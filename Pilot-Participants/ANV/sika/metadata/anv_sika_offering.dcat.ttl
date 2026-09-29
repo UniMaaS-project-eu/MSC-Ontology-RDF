@@ -1,0 +1,94 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mscmeta: <http://unimaas-project.eu/MSCMetadata#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scanv: <http://unimaas-project.eu/MSCOntology/data/anv/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://unimaas-project.eu/dataset/anv/anv_sika_offering> a void:Dataset,
+        dcat:Dataset ;
+    dcterms:conformsTo <http://unimaas-project.eu/MSCMetadata/0.2.0>,
+        <http://unimaas-project.eu/MSCOntology/1.2.0> ;
+    dcterms:creator <http://unimaas-project.eu/participant/sika> ;
+    dcterms:description "Supplier self-declaration of Sika: location, lead time, minimum transport quantity and technical/commercial data of the offered materials (UHPC Concrete (Sika #2); UHPC Concrete (Sika)), linked to ANV's generic material categories."@en ;
+    dcterms:identifier "anv_sika_offering" ;
+    dcterms:issued "2026-09-29"^^xsd:date ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:modified "2026-09-29"^^xsd:date ;
+    dcterms:publisher <http://unimaas-project.eu/participant/sika> ;
+    dcterms:requires <http://unimaas-project.eu/dataset/anv/anv_site_capabilities> ;
+    dcterms:spatial scanv:location_stuttgart ;
+    dcterms:title "Sika material offering for ANV 3D printing"@en ;
+    void:classPartition [ void:class sc:Supplier ;
+            void:entities 1 ],
+        [ void:class sc:Resource ;
+            void:entities 2 ],
+        [ void:class sc:Location ;
+            void:entities 1 ],
+        [ void:class sc:MaterialResource ;
+            void:entities 2 ] ;
+    void:entities 4 ;
+    void:propertyPartition [ void:property skos:narrower ;
+            void:triples 2 ],
+        [ void:property rdf:type ;
+            void:triples 6 ],
+        [ void:property sc:earlyAgeCompressiveStrengthAt24h ;
+            void:triples 2 ],
+        [ void:property sc:provides ;
+            void:triples 2 ],
+        [ void:property sc:supplyLeadTime ;
+            void:triples 1 ],
+        [ void:property sc:minimumTransportQuantity ;
+            void:triples 1 ],
+        [ void:property skos:broader ;
+            void:triples 2 ],
+        [ void:property sc:certificationCompliance ;
+            void:triples 2 ],
+        [ void:property rdfs:label ;
+            void:triples 4 ],
+        [ void:property sc:subClassOf ;
+            void:triples 2 ],
+        [ void:property sc:isProvidedBy ;
+            void:triples 2 ],
+        [ void:property sc:superClassOf ;
+            void:triples 2 ],
+        [ void:property sc:costPerKg ;
+            void:triples 2 ],
+        [ void:property sc:hasLocation ;
+            void:triples 1 ] ;
+    void:triples 31 ;
+    void:vocabulary sc: ;
+    mscmeta:aboutLocation scanv:location_stuttgart ;
+    mscmeta:aboutResource scanv:resource_uhpc_concrete_sika,
+        scanv:resource_uhpc_concrete_sika_2 ;
+    mscmeta:aboutSupplier scanv:supplier_sika ;
+    mscmeta:dataOrigin "ANV pilot spreadsheets (supplier list, material data, product/process cost sheets) transformed to RDF with the MSC ontology; partitioned per data owner for the DMS simulation." ;
+    mscmeta:ingestionTarget "CentralKG" ;
+    mscmeta:materialCategory scanv:resource_uhpc_concrete ;
+    mscmeta:mscFacet "Supplier" ;
+    mscmeta:mscOntologyVersion "1.2.0" ;
+    mscmeta:pilot "anv" ;
+    mscmeta:sharedEntity scanv:resource_uhpc_concrete ;
+    mscmeta:syntheticDataset false ;
+    dcat:distribution <http://unimaas-project.eu/dataset/anv/anv_sika_offering/distribution/ttl> ;
+    dcat:keyword "3D concrete printing"@en,
+        "Supplier"@en,
+        "construction"@en,
+        "manufacturing service chain"@en,
+        "street furniture"@en ;
+    dcat:version "1.0.0" .
+
+<http://unimaas-project.eu/dataset/anv/anv_sika_offering/distribution/ttl> a dcat:Distribution ;
+    dcterms:format <http://publications.europa.eu/resource/authority/file-type/RDF_TURTLE> ;
+    dcat:byteSize 1584 ;
+    dcat:mediaType <http://www.iana.org/assignments/media-types/text/turtle> .
+
+<http://unimaas-project.eu/participant/sika> a foaf:Organization ;
+    dcterms:identifier "did:web:edc-proxy-sika%3A80:sika" ;
+    foaf:name "Sika" .
+

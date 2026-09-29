@@ -1,0 +1,100 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat:    <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix void:    <http://rdfs.org/ns/void#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix sc:      <http://unimaas-project.eu/MSCOntology#> .
+@prefix mscmeta: <http://unimaas-project.eu/MSCMetadata#> .
+
+# =====================================================================
+# Design rules
+#  1. Reuse DCAT 3 / DCTERMS / VoID wherever a term exists (title, publisher, version, spatial, triples, entities, class/property, partitions). 
+#  2. Only UniMaaS-specific facets live in mscmeta:.
+#  3. mscmeta:about* multi-valued IRIs pointing into the MSC KG (which supplier/site/material/logistic route a dataset is about).
+#       Used by the Federated Catalog for discovery (dashboard) and for ingestion in the KG.
+#  4. Linkage facets make cross-participant joins explicit: which KG entities a dataset shares with others and which datasets it requires.
+# =====================================================================
+
+<http://unimaas-project.eu/MSCMetadata> a owl:Ontology ;
+    rdfs:label "UniMaaS MSC Dataset Metadata Profile" ;
+    owl:versionIRI <http://unimaas-project.eu/MSCMetadata/0.2.0> ;
+    owl:versionInfo "0.2.0" ;
+    rdfs:comment "DCAT/VoID application profile describing MSC-conformant RDF datasets shared via EDC connectors and ingested by the Digital Thread into the central KG." .
+
+mscmeta:SelectionFacet a owl:Class ;
+    rdfs:subClassOf owl:DatatypeProperty ;
+    rdfs:comment "Marker: single-valued, controlled plain-literal property usable as a Digital Thread filter key (dms.json)." .
+
+mscmeta:pilot a owl:DatatypeProperty , owl:FunctionalProperty , mscmeta:SelectionFacet ;
+    rdfs:label "pilot" ;
+    rdfs:domain dcat:Dataset ; rdfs:range xsd:string ;
+    rdfs:comment "UniMaaS pilot / use case the dataset belongs to. Controlled values: ANV, Adient, <other pilots>." .
+
+mscmeta:mscFacet a owl:DatatypeProperty , owl:FunctionalProperty , mscmeta:SelectionFacet ;
+    rdfs:label "MSC facet" ;
+    rdfs:domain dcat:Dataset ; rdfs:range xsd:string ;
+    rdfs:comment "Which slice of the MSC the dataset populates. Controlled values: Site, ProcessConfiguration, LogisticRoute (LogisticRoute), Supplier. Replaces the boolean relatedToResources / relatedToPlanning flags." .
+
+mscmeta:ingestionTarget a owl:DatatypeProperty , owl:FunctionalProperty , mscmeta:SelectionFacet ;
+    rdfs:label "ingestion target" ;
+    rdfs:domain dcat:Dataset ; rdfs:range xsd:string ;
+    rdfs:comment "Explicit opt-in of the provider: 'CentralKG' if the dataset is intended for ingestion into the DMS central KG, 'None' for catalogue-only datasets." .
+
+mscmeta:mscOntologyVersion a owl:DatatypeProperty , owl:FunctionalProperty , mscmeta:SelectionFacet ;
+    rdfs:label "MSC ontology version" ;
+    rdfs:domain dcat:Dataset ; rdfs:range xsd:string ;
+    rdfs:comment "Version of the MSC ontology the data conforms to (e.g. '1.2.0'). Scalar companion of dcterms:conformsTo so it can be filtered." .
+
+mscmeta:syntheticDataset a owl:DatatypeProperty , owl:FunctionalProperty ;
+    rdfs:label "synthetic dataset" ;
+    rdfs:domain dcat:Dataset ; rdfs:range xsd:boolean .
+
+mscmeta:aboutEntity a owl:ObjectProperty ;
+    rdfs:label "about entity" ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:comment "Generic: an MSC KG individual the dataset describes (declares rdf:type for). Specialised below per MSC class." .
+
+mscmeta:aboutSite     a owl:ObjectProperty ; rdfs:subPropertyOf mscmeta:aboutEntity ; rdfs:range sc:Site ;     rdfs:label "about site" .
+mscmeta:aboutProcess  a owl:ObjectProperty ; rdfs:subPropertyOf mscmeta:aboutEntity ; rdfs:range sc:Process ;  rdfs:label "about process" .
+mscmeta:aboutSupplier a owl:ObjectProperty ; rdfs:subPropertyOf mscmeta:aboutEntity ; rdfs:range sc:Supplier ; rdfs:label "about supplier" .
+mscmeta:aboutResource a owl:ObjectProperty ; rdfs:subPropertyOf mscmeta:aboutEntity ; rdfs:range sc:Resource ; rdfs:label "about resource" .
+mscmeta:aboutLogisticRoute    a owl:ObjectProperty ; rdfs:subPropertyOf mscmeta:aboutEntity ; rdfs:range sc:LogisticRoute ; rdfs:label "about logistic route" .
+mscmeta:aboutLocation a owl:ObjectProperty ; rdfs:subPropertyOf mscmeta:aboutEntity ; rdfs:range sc:Location ; rdfs:label "about location" .
+
+mscmeta:productFamily a owl:DatatypeProperty ;
+    rdfs:label "product family" ;
+    rdfs:domain dcat:Dataset ; rdfs:range xsd:string ;
+    rdfs:comment "Product family covered (e.g. 'bench', 'seating wall'). Used instead of enumerating every sc:Product IRI." .
+
+mscmeta:materialCategory a owl:ObjectProperty ;
+    rdfs:label "material category" ;
+    rdfs:domain dcat:Dataset ; rdfs:range sc:MaterialResource ;
+    rdfs:comment "Generic material resource (category) the dataset offers or consumes, e.g. anv:resource_uhpc_concrete. Main discovery key for 'who can supply X'." .
+
+# ---------------------------------------------------------------------
+# LINKAGE facets (cross-participant integration)
+# ---------------------------------------------------------------------
+
+mscmeta:sharedEntity a owl:ObjectProperty ;
+    rdfs:label "shared entity" ;
+    rdfs:domain dcat:Dataset ;
+    rdfs:comment "KG individual referenced in this dataset but typed/owned by another dataset (join point). The IRI must be identical across participants for the union to connect." .
+
+# dcterms:requires (dataset -> dataset) is reused for "needs this other dataset to be complete".
+
+mscmeta:dataOrigin a owl:DatatypeProperty ;
+    rdfs:label "data origin" ;
+    rdfs:domain dcat:Dataset ; rdfs:range xsd:string ;
+    rdfs:comment "Provenance of the raw data and transformation (free text; use prov:wasDerivedFrom when a source IRI exists)." .
+
+# ---------------------------------------------------------------------
+# Deprecated terms (kept for backward compatibility)
+# ---------------------------------------------------------------------
+
+mscmeta:containsClass    owl:deprecated true ; rdfs:comment "Use void:classPartition [ void:class C ; void:entities n ]." .
+mscmeta:containsProperty owl:deprecated true ; rdfs:comment "Use void:propertyPartition [ void:property P ; void:triples n ]." .
+mscmeta:entityCount      owl:deprecated true ; owl:equivalentProperty void:entities .
+mscmeta:tripleCount      owl:deprecated true ; owl:equivalentProperty void:triples .

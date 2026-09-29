@@ -1,0 +1,28 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc: <http://unimaas-project.eu/MSCOntology#> .
+@prefix scanv: <http://unimaas-project.eu/MSCOntology/data/anv/> .
+
+scanv:resource_3d_printer a sc:EquipmentResource,
+        sc:Resource ;
+    rdfs:label "3D Printer" .
+
+scanv:resource_labour a sc:HumanResource,
+        sc:Resource ;
+    rdfs:label "Labour" .
+
+scanv:resource_standard_concrete a sc:MaterialResource,
+        sc:Resource ;
+    rdfs:label "Standard Concrete" .
+
+scanv:resource_uhpc_concrete a sc:MaterialResource,
+        sc:Resource ;
+    rdfs:label "UHPC Concrete" .
+
+scanv:process_3d_printing a sc:Process ;
+    rdfs:label "3D Printing" ;
+    sc:isPerformedAt scanv:site_anv .
+
+scanv:site_anv a sc:Site ;
+    rdfs:label "ANV" ;
+    sc:performs scanv:process_3d_printing .
+
