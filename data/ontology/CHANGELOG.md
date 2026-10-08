@@ -36,7 +36,6 @@
 - New object property hasCharacteristicType linking a Characteristic instance to its CharacteristicType.
 - New datatype properties characteristicValue (on Characteristic) and unit (on CharacteristicType), so characteristic instances can carry literal values and their types can declare units.
 - New object properties subClassOf and superClassOf (Resource to Resource), declared as owl:inverseOf each other, enabling instance-level specialization hierarchies of resources (e.g. supplier-specific material variants under a generic material resource).
-- New object property siteHasResource and suppliesTo, connecting sites to resources and sites to sites, respectively.
 - ProcessConfiguration, ResourceConf, and LogisticRoute are now subclasses of ConfigurableEntity, so hasCharacteristic and pilot datatype properties formally cover them.
 - Datatype properties introduced to support the four pilot datasets.
 
@@ -50,3 +49,14 @@
 ### Removed
 - Unused datatype properties from 1.2.0.
 - Secondary skos:relatedMatch annotations pruned to keep alignments minimal.
+
+## [1.4.0] - 2026-10-08
+### Added
+- New object property producesProduct (Site to Product), with inverse isProducedAt, linking each site to the finished good it produces (Adient "Finished Good Produced").
+- New datatype properties latitude and longitude (decimal degrees, WGS84) on Site, Supplier and Location, mapped to geo:lat / geo:long via skos:closeMatch.
+- New LogisticRoute demand properties: avgDailyDemand and maxDailyDemand (containers/day, derived from the monthly average daily demand), and demandPeriodStart / demandPeriodEnd (xsd:gYearMonth) stating the period they cover.
+- New LogisticRoute lane parameters: loadState (full/empty), fullContainerValue (EUR), boxKmPerDay (container-km/day), fullRatio (share of network full box-km/day), freightCapacity (trucks) and leadTimeDaysExact (unrounded lead time in days).
+- owl:priorVersion pointing to 1.3.0.
+
+### Changed
+- Unit annotations (rdfs:comment) added to the existing Adient LogisticRoute properties: leadTimeDays, emptyTruckCap, fullTruckCap, qDaysBetweenReceivingsForFTLs, qDaysBetweenEmptyReturnsFTLs and approxTransportCostFullTruck.
